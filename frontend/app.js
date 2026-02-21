@@ -553,11 +553,11 @@ function renderFuel(el) {
         <thead><tr><th>Date</th><th>Vehicle</th><th>Driver</th><th>Liters</th><th>Cost</th><th>Station</th><th>Receipt</th></tr></thead>
         <tbody>
           ${[
-            ['Feb 21','TRK-001','John Santos','65L','${formatCurrency(4420)}','Petron EDSA','✅'],
-            ['Feb 21','TRK-005','Ana Gonzalez','40L','${formatCurrency(2720)}','Shell Quezon','✅'],
-            ['Feb 20','TRK-003','Pedro Reyes','55L','${formatCurrency(3740)}','Caltex Makati','✅'],
-            ['Feb 20','TRK-002','Maria Cruz','70L','${formatCurrency(4760)}','Petron Ortigas','⬆️ Upload'],
-            ['Feb 19','TRK-001','John Santos','60L','${formatCurrency(4080)}','Shell EDSA','✅'],
+            ['Feb 21','TRK-001','John Santos','65L',4420,'Petron EDSA','✅'],
+            ['Feb 21','TRK-005','Ana Gonzalez','40L',2720,'Shell Quezon','✅'],
+            ['Feb 20','TRK-003','Pedro Reyes','55L',3740,'Caltex Makati','✅'],
+            ['Feb 20','TRK-002','Maria Cruz','70L',4760,'Petron Ortigas','⬆️ Upload'],
+            ['Feb 19','TRK-001','John Santos','60L',4080,'Shell EDSA','✅'],
           ].map(([date,veh,driver,liters,cost,station,receipt]) => `
             <tr>
               <td class="td-sub">${date}</td>
@@ -754,11 +754,11 @@ function renderExpenses(el) {
         <thead><tr><th>Date</th><th>Category</th><th>Vehicle</th><th>Description</th><th>Amount</th><th>Approved By</th></tr></thead>
         <tbody>
           ${[
-            ['Feb 21','Fuel','TRK-001','Petron EDSA – 65L','${formatCurrency(4420)}','Auto-approved'],
-            ['Feb 20','Maintenance','TRK-004','Engine overhaul – AutoCare PH','${formatCurrency(45000)}','Carlos Mendoza'],
-            ['Feb 20','Fuel','TRK-002','Shell Quezon – 70L','${formatCurrency(4760)}','Auto-approved'],
-            ['Feb 19','Toll/Misc','TRK-005','NLEX + SCTEX tolls','${formatCurrency(850)}','Rosa Jimenez'],
-            ['Feb 19','Maintenance','TRK-006','Engine parts – AutoCare PH','${formatCurrency(28500)}','Carlos Mendoza'],
+            ['Feb 21','Fuel','TRK-001','Petron EDSA – 65L',4420,'Auto-approved'],
+            ['Feb 20','Maintenance','TRK-004','Engine overhaul – AutoCare PH',45000,'Carlos Mendoza'],
+            ['Feb 20','Fuel','TRK-002','Shell Quezon – 70L',4760,'Auto-approved'],
+            ['Feb 19','Toll/Misc','TRK-005','NLEX + SCTEX tolls',850,'Rosa Jimenez'],
+            ['Feb 19','Maintenance','TRK-006','Engine parts – AutoCare PH',28500,'Carlos Mendoza'],
           ].map(([date,cat,veh,desc,amount,by]) => `
             <tr>
               <td class="td-sub">${date}</td>
