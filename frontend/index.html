@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FleetFlow — Smart Fleet & Logistics Management</title>
+  <title>TransifyFlow — Smart Fleet & Logistics Management</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -225,6 +225,44 @@
         </div>
       </div>
     </div>
+  <div class="auth-card">
+    <div class="auth-logo">Fleet<span>Flow</span></div>
+    <div class="auth-tagline">All in One logistic Management Platform</div>
+    <div class="auth-title">Welcome</div>
+    <div class="auth-sub">Sign in to your account to continue</div>
+
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input class="form-input" type="email" id="login-email" placeholder="you@company.com" value="admin@fleetflow.io">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input class="form-input" type="password" id="login-password" placeholder="••••••••" value="password">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Role <span style="color:var(--text3); font-weight:400;">(or auto-detect from email)</span></label>
+      <select class="form-select" id="login-role">
+        <option value="admin">Administrator</option>
+        <option value="fleet_manager">Fleet Manager</option>
+        <option value="dispatcher">Dispatcher</option>
+        <option value="safety_officer">Safety Officer</option>
+        <option value="financial_analyst">Financial Analyst</option>
+        <option value="driver">Driver (Delivery Personnel)</option>
+      </select>
+    </div>
+
+    <div class="auth-extras">
+      <label class="check-wrap">
+        <input type="checkbox" checked>
+        Remember me
+      </label>
+      <a href="#" class="link">Forgot password?</a>
+    </div>
+
+    <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In →</button>
+
 
     <!-- RIGHT PANEL -->
     <div class="auth-card">
