@@ -48,15 +48,15 @@ function changeCurrency(newCurrency) {
 // ======================== STATE ========================
 let currentRole = 'admin';
 let currentPage = 'dashboard';
-let currentUser = { name: 'Alex Rivera', role: 'Administrator', initials: 'AR' };
+let currentUser = { name: 'Rajesh Kumar', role: 'Administrator', initials: 'RK' };
 
 const ROLES = {
   admin: {
     label: 'Administrator',
-    name: 'Alex Rivera',
-    initials: 'AR',
+    name: 'Rajesh Kumar',
+    initials: 'RK',
     menu: [
-      { id: 'dashboard', icon: '⊞', label: 'Command Center' },
+      { id: 'dashboard', icon: '⊞', label: 'Command Centre' },
       { id: 'vehicles', icon: '🚛', label: 'Vehicles' },
       { id: 'trips', icon: '📦', label: 'Trips' },
       { id: 'drivers', icon: '👤', label: 'Drivers' },
@@ -69,8 +69,8 @@ const ROLES = {
   },
   fleet_manager: {
     label: 'Fleet Manager',
-    name: 'Carlos Mendoza',
-    initials: 'CM',
+    name: 'Suresh Nair',
+    initials: 'SN',
     menu: [
       { id: 'dashboard', icon: '⊞', label: 'Dashboard' },
       { id: 'vehicles', icon: '🚛', label: 'Vehicles' },
@@ -81,8 +81,8 @@ const ROLES = {
   },
   dispatcher: {
     label: 'Dispatcher',
-    name: 'Rosa Jimenez',
-    initials: 'RJ',
+    name: 'Priya Mehta',
+    initials: 'PM',
     menu: [
       { id: 'dashboard', icon: '⊞', label: 'Dashboard' },
       { id: 'trips', icon: '📦', label: 'Trip Dispatcher' },
@@ -92,8 +92,8 @@ const ROLES = {
   },
   safety_officer: {
     label: 'Safety Officer',
-    name: 'Lena Park',
-    initials: 'LP',
+    name: 'Anil Verma',
+    initials: 'AV',
     menu: [
       { id: 'compliance', icon: '🛡️', label: 'Compliance' },
       { id: 'drivers', icon: '👤', label: 'Driver Profiles' },
@@ -102,8 +102,8 @@ const ROLES = {
   },
   financial_analyst: {
     label: 'Financial Analyst',
-    name: 'David Tan',
-    initials: 'DT',
+    name: 'Deepa Iyer',
+    initials: 'DI',
     menu: [
       { id: 'expenses', icon: '💰', label: 'Expense Logs' },
       { id: 'fuel', icon: '⛽', label: 'Fuel Logs' },
@@ -112,8 +112,8 @@ const ROLES = {
   },
   driver: {
     label: 'Driver',
-    name: 'Juan Dela Cruz',
-    initials: 'JD',
+    name: 'Ramesh Yadav',
+    initials: 'RY',
     menu: [
       { id: 'driver-view', icon: '🚗', label: 'My Trips' },
       { id: 'fuel', icon: '⛽', label: 'Fuel Log' },
@@ -298,7 +298,7 @@ function renderDashboard(el) {
       </div>
       <div class="kpi-card">
         <div class="kpi-header"><span class="kpi-label">Today's Cost</span><span class="kpi-icon">💰</span></div>
-        <div class="kpi-value">${formatCurrency(48000)}</div>
+        <div class="kpi-value">₱48K</div>
         <div class="kpi-change kpi-down">↑ 12% vs yesterday</div>
       </div>
     </div>
@@ -318,7 +318,7 @@ function renderDashboard(el) {
             <div class="card-sub">Live vehicle status</div>
           </div>
         </div>
-        <div id="map" style="height:260px; border-radius:12px;"></div>
+        <div class="gps-placeholder">
           <div style="font-size:36px; position:relative; z-index:1;">🗺️</div>
           <div class="gps-label">Real-Time GPS Map</div>
           <div class="gps-sub">Telematics integration — Coming soon</div>
@@ -482,52 +482,31 @@ function renderTrips(el) {
 }
 
 function renderMaintenance(el) {
-  const data = [
-    { veh:'TRK-004', type:'Full Service + Oil Change', date:'Feb 15, 2025', cost:12500, tech:'AutoCare PH', status:'In Progress', next:'Mar 15, 2025' },
-    { veh:'TRK-001', type:'Tire Replacement', date:'Feb 10, 2025', cost:8200, tech:'TireKing', status:'Completed', next:'—' },
-    { veh:'TRK-006', type:'Engine Overhaul', date:'Feb 08, 2025', cost:45000, tech:'AutoCare PH', status:'In Progress', next:'—' },
-    { veh:'TRK-003', type:'Brake Pad Replacement', date:'Feb 01, 2025', cost:3500, tech:'QuickFix', status:'Completed', next:'Aug 01, 2025' },
-    { veh:'TRK-002', type:'Air Filter + Belts', date:'Jan 22, 2025', cost:2100, tech:'AutoCare PH', status:'Completed', next:'Jul 22, 2025' }
-  ];
-
   el.innerHTML = `
-    <div class="alert alert-danger">
-      🔧 3 vehicles are overdue for maintenance and have been removed from dispatch selection.
-    </div>
-
+    <div class="alert alert-danger">🔧 3 vehicles are overdue for maintenance and have been removed from dispatch selection.</div>
     <div class="card">
       <div class="card-header">
-        <div>
-          <div class="card-title">Maintenance Logs</div>
-          <div class="card-sub">Service records</div>
-        </div>
-        <button class="btn btn-primary btn-sm">+ Log Service</button>
+        <div><div class="card-title">Maintenance Logs</div><div class="card-sub">Service records — adding a record sets vehicle to "In Shop"</div></div>
+        <button class="btn btn-primary btn-sm" onclick="showToast('Maintenance form opened','success')">+ Log Service</button>
       </div>
-
       <table>
-        <thead>
-          <tr>
-            <th>Vehicle</th>
-            <th>Service Type</th>
-            <th>Date</th>
-            <th>Cost</th>
-            <th>Technician</th>
-            <th>Status</th>
-            <th>Next Due</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Vehicle</th><th>Service Type</th><th>Date</th><th>Cost</th><th>Technician</th><th>Status</th><th>Next Due</th></tr></thead>
         <tbody>
-          ${data.map(item => `
+          ${[
+            ['TRK-004','Full Service + Oil Change','Feb 15, 2025','₱12,500','AutoCare PH','In Progress','Mar 15, 2025'],
+            ['TRK-001','Tire Replacement','Feb 10, 2025','₱8,200','TireKing','Completed','—'],
+            ['TRK-006','Engine Overhaul','Feb 08, 2025','₱45,000','AutoCare PH','In Progress','—'],
+            ['TRK-003','Brake Pad Replacement','Feb 01, 2025','₱3,500','QuickFix','Completed','Aug 01, 2025'],
+            ['TRK-002','Air Filter + Belts','Jan 22, 2025','₱2,100','AutoCare PH','Completed','Jul 22, 2025'],
+          ].map(([veh,type,date,cost,tech,status,next]) => `
             <tr>
-              <td class="td-bold td-mono">${item.veh}</td>
-              <td>${item.type}</td>
-              <td class="td-sub">${item.date}</td>
-              <td class="td-mono" style="color:var(--danger); font-weight:600;">
-                ${formatCurrency(item.cost)}
-              </td>
-              <td>${item.tech}</td>
-              <td>${maintenanceStatusPill(item.status)}</td>
-              <td class="td-sub">${item.next}</td>
+              <td class="td-bold td-mono">${veh}</td>
+              <td>${type}</td>
+              <td class="td-sub">${date}</td>
+              <td class="td-mono" style="color:var(--danger); font-weight:600;">${cost}</td>
+              <td>${tech}</td>
+              <td>${maintenanceStatusPill(status)}</td>
+              <td class="td-sub">${next}</td>
             </tr>
           `).join('')}
         </tbody>
@@ -539,8 +518,8 @@ function renderMaintenance(el) {
 function renderFuel(el) {
   el.innerHTML = `
     <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);">
-      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Total Fuel Cost</span><span>⛽</span></div><div class="kpi-value">${formatCurrency(284000)}</div><div class="kpi-change kpi-down">↑ 8% this month</div></div>
-      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Avg Cost/km</span><span>📏</span></div><div class="kpi-value">${formatCurrency(12.4)}</div><div class="kpi-change kpi-up">↓ 3% improved</div></div>
+      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Total Fuel Cost</span><span>⛽</span></div><div class="kpi-value">₱284K</div><div class="kpi-change kpi-down">↑ 8% this month</div></div>
+      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Avg Cost/km</span><span>📏</span></div><div class="kpi-value">₱12.4</div><div class="kpi-change kpi-up">↓ 3% improved</div></div>
       <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Fuel Efficiency</span><span>🌿</span></div><div class="kpi-value">8.2</div><div class="kpi-change" style="color:var(--text3)">km per liter avg</div></div>
       <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Total Liters</span><span>🪣</span></div><div class="kpi-value">22,900</div><div class="kpi-change kpi-down">This month</div></div>
     </div>
@@ -553,11 +532,11 @@ function renderFuel(el) {
         <thead><tr><th>Date</th><th>Vehicle</th><th>Driver</th><th>Liters</th><th>Cost</th><th>Station</th><th>Receipt</th></tr></thead>
         <tbody>
           ${[
-            ['Feb 21','TRK-001','John Santos','65L',4420,'Petron EDSA','✅'],
-            ['Feb 21','TRK-005','Ana Gonzalez','40L',2720,'Shell Quezon','✅'],
-            ['Feb 20','TRK-003','Pedro Reyes','55L',3740,'Caltex Makati','✅'],
-            ['Feb 20','TRK-002','Maria Cruz','70L',4760,'Petron Ortigas','⬆️ Upload'],
-            ['Feb 19','TRK-001','John Santos','60L',4080,'Shell EDSA','✅'],
+            ['Feb 21','TRK-001','John Santos','65L','₱4,420','Petron EDSA','✅'],
+            ['Feb 21','TRK-005','Ana Gonzalez','40L','₱2,720','Shell Quezon','✅'],
+            ['Feb 20','TRK-003','Pedro Reyes','55L','₱3,740','Caltex Makati','✅'],
+            ['Feb 20','TRK-002','Maria Cruz','70L','₱4,760','Petron Ortigas','⬆️ Upload'],
+            ['Feb 19','TRK-001','John Santos','60L','₱4,080','Shell EDSA','✅'],
           ].map(([date,veh,driver,liters,cost,station,receipt]) => `
             <tr>
               <td class="td-sub">${date}</td>
@@ -622,41 +601,73 @@ function renderDrivers(el) {
 }
 
 function renderAnalytics(el) {
-  const costData = [
-    { vehicle:'TRK-001', cost:42800, pct:85 },
-    { vehicle:'TRK-002', cost:31200, pct:62 },
-    { vehicle:'TRK-003', cost:18500, pct:37 },
-    { vehicle:'TRK-004', cost:71000, pct:100 },
-    { vehicle:'TRK-005', cost:24100, pct:48 }
-  ];
-
   el.innerHTML = `
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Operational Cost</div>
-          <div class="card-sub">By vehicle — this month</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Fuel Efficiency</div><div class="card-sub">km/L by vehicle</div></div><button class="btn btn-ghost btn-sm" onclick="showToast('Exporting CSV...','success')">📤 Export CSV</button></div>
+        <div style="padding:0 24px;">
+          ${[['TRK-001',8.2,10],['TRK-002',9.1,10],['TRK-003',7.4,10],['TRK-004',6.1,10],['TRK-005',8.8,10]].map(([v,val,max]) => `
+            <div class="metric-row">
+              <div class="metric-label">${v}</div>
+              <div style="display:flex;align-items:center;gap:12px;flex:1;margin:0 16px;">
+                <div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:${val/max*100}%"></div></div>
+              </div>
+              <div class="metric-value">${val} km/L</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="padding:16px 24px; background:var(--bg); border-top:1px solid var(--border); font-size:13px; color:var(--text2);">Fleet Average: <strong>7.9 km/L</strong></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Operational Cost</div><div class="card-sub">By vehicle — this month</div></div><button class="btn btn-ghost btn-sm" onclick="showToast('Exporting PDF...','success')">📄 Export PDF</button></div>
+        <div style="padding:0 24px;">
+          ${[['TRK-001','₱42,800',85],['TRK-002','₱31,200',62],['TRK-003','₱18,500',37],['TRK-004','₱71,000',100],['TRK-005','₱24,100',48]].map(([v,cost,pct]) => `
+            <div class="metric-row">
+              <div class="metric-label">${v}</div>
+              <div style="display:flex;align-items:center;gap:12px;flex:1;margin:0 16px;">
+                <div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:${pct}%;background:${pct>80?'var(--danger)':pct>60?'var(--warning)':'var(--success)'}"></div></div>
+              </div>
+              <div class="metric-value">${cost}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="padding:16px 24px; background:var(--bg); border-top:1px solid var(--border); font-size:13px; color:var(--text2);">Total Fleet Cost: <strong>₱187,600</strong></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Vehicle ROI</div><div class="card-sub">Revenue vs Cost ratio</div></div></div>
+        <div style="padding:0 24px;">
+          ${[['TRK-001','3.2x','↑ Excellent'],['TRK-002','2.8x','↑ Good'],['TRK-003','1.9x','→ Average'],['TRK-004','0.4x','↓ Poor (In Shop)'],['TRK-005','2.5x','↑ Good']].map(([v,roi,trend]) => `
+            <div class="metric-row">
+              <div class="metric-label">${v}</div>
+              <div class="metric-value">${roi} <span style="font-size:11px; font-weight:400; color:var(--text3);">${trend}</span></div>
+            </div>
+          `).join('')}
         </div>
       </div>
-
-      <div style="padding:0 24px;">
-        ${costData.map(item => `
-          <div class="metric-row">
-            <div class="metric-label">${item.vehicle}</div>
-            <div style="display:flex;align-items:center;gap:12px;flex:1;margin:0 16px;">
-              <div class="progress-bar" style="flex:1;">
-                <div class="progress-fill" style="width:${item.pct}%"></div>
-              </div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Maintenance Frequency</div><div class="card-sub">Services per vehicle per month</div></div></div>
+        <div style="padding:0 24px;">
+          ${[['TRK-001',1,'Low'],['TRK-002',2,'Normal'],['TRK-003',1,'Low'],['TRK-004',4,'High ⚠️'],['TRK-005',1,'Low']].map(([v,freq,label]) => `
+            <div class="metric-row">
+              <div class="metric-label">${v}</div>
+              <div class="metric-value">${freq}x / month <span style="font-size:11px; color:${freq>2?'var(--danger)':'var(--success)'}; font-weight:600;">${label}</span></div>
             </div>
-            <div class="metric-value">
-              ${formatCurrency(item.cost)}
-            </div>
-          </div>
-        `).join('')}
+          `).join('')}
+        </div>
       </div>
+    </div>
 
-      <div style="padding:16px 24px; border-top:1px solid var(--border);">
-        Total Fleet Cost: <strong>${formatCurrency(187600)}</strong>
+    <div class="card" style="margin-top:4px;">
+      <div class="card-header">
+        <div><div class="card-title">Future: Predictive Maintenance AI</div></div>
+        <span class="pill pill-blue">Coming Soon</span>
+      </div>
+      <div style="padding:24px; color:var(--text2); font-size:14px; line-height:1.7;">
+        AI-powered predictive maintenance will analyze odometer readings, maintenance history, and telematics data to predict failures before they happen — reducing unplanned downtime by up to 40%.
       </div>
     </div>
   `;
@@ -739,10 +750,10 @@ function renderCompliance(el) {
 function renderExpenses(el) {
   el.innerHTML = `
     <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Total Expenses</span><span>💸</span></div><div class="kpi-value">${formatCurrency(512000)}</div><div class="kpi-change kpi-down">↑ 6% vs last month</div></div>
-      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Fuel</span><span>⛽</span></div><div class="kpi-value">${formatCurrency(284000)}</div></div>
-      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Maintenance</span><span>🔧</span></div><div class="kpi-value">${formatCurrency(187000)}</div></div>
-      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Other</span><span>📋</span></div><div class="kpi-value">${formatCurrency(41000)}</div></div>
+      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Total Expenses</span><span>💸</span></div><div class="kpi-value">₱512K</div><div class="kpi-change kpi-down">↑ 6% vs last month</div></div>
+      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Fuel</span><span>⛽</span></div><div class="kpi-value">₱284K</div></div>
+      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Maintenance</span><span>🔧</span></div><div class="kpi-value">₱187K</div></div>
+      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Other</span><span>📋</span></div><div class="kpi-value">₱41K</div></div>
     </div>
     <div style="display:flex;gap:10px;margin-bottom:20px;">
       <button class="btn btn-primary btn-sm" onclick="showToast('Exporting CSV...','success')">📊 Export CSV</button>
@@ -754,11 +765,11 @@ function renderExpenses(el) {
         <thead><tr><th>Date</th><th>Category</th><th>Vehicle</th><th>Description</th><th>Amount</th><th>Approved By</th></tr></thead>
         <tbody>
           ${[
-            ['Feb 21','Fuel','TRK-001','Petron EDSA – 65L',4420,'Auto-approved'],
-            ['Feb 20','Maintenance','TRK-004','Engine overhaul – AutoCare PH',45000,'Carlos Mendoza'],
-            ['Feb 20','Fuel','TRK-002','Shell Quezon – 70L',4760,'Auto-approved'],
-            ['Feb 19','Toll/Misc','TRK-005','NLEX + SCTEX tolls',850,'Rosa Jimenez'],
-            ['Feb 19','Maintenance','TRK-006','Engine parts – AutoCare PH',28500,'Carlos Mendoza'],
+            ['Feb 21','Fuel','TRK-001','Petron EDSA – 65L','₱4,420','Auto-approved'],
+            ['Feb 20','Maintenance','TRK-004','Engine overhaul – AutoCare PH','₱45,000','Carlos Mendoza'],
+            ['Feb 20','Fuel','TRK-002','Shell Quezon – 70L','₱4,760','Auto-approved'],
+            ['Feb 19','Toll/Misc','TRK-005','NLEX + SCTEX tolls','₱850','Rosa Jimenez'],
+            ['Feb 19','Maintenance','TRK-006','Engine parts – AutoCare PH','₱28,500','Carlos Mendoza'],
           ].map(([date,cat,veh,desc,amount,by]) => `
             <tr>
               <td class="td-sub">${date}</td>
@@ -806,7 +817,7 @@ function renderDriverView(el) {
     <div class="driver-card">
       <div style="font-weight:700; font-size:16px; margin-bottom:16px;">⛽ Log Fuel Stop</div>
       <div class="form-group"><label class="form-label">Liters Filled</label><input class="form-input" type="number" placeholder="e.g. 40"></div>
-      <div class="form-group"><label class="form-label">Total Cost (₹)</label><input class="form-input" type="number" placeholder="e.g. 2720"></div>
+      <div class="form-group"><label class="form-label">Total Cost (₱)</label><input class="form-input" type="number" placeholder="e.g. 2720"></div>
       <div class="form-group"><label class="form-label">Gas Station</label><input class="form-input" placeholder="e.g. Petron NLEX"></div>
       <div class="form-group"><label class="form-label">Receipt Photo</label><input class="form-input" type="file" accept="image/*"></div>
       <button class="btn btn-primary btn-sm w-full" style="justify-content:center;" onclick="showToast('Fuel log submitted!','success')">Submit Fuel Log</button>
@@ -827,15 +838,8 @@ function renderSettings(el) {
         <div class="card-header"><div class="card-title">System Configuration</div></div>
         <div style="padding:24px;">
           <div class="form-group"><label class="form-label">Company Name</label><input class="form-input" value="FleetFlow Operations Inc."></div>
-          <div class="form-group">
-            <label class="form-label">Currency</label>
-            <select class="form-select" onchange="changeCurrency(this.value)">
-              <option value="INR" ${selectedCurrency === 'INR' ? 'selected' : ''}>Indian Rupee (₹)</option>
-              <option value="USD" ${selectedCurrency === 'USD' ? 'selected' : ''}>US Dollar ($)</option>
-              <option value="PHP" ${selectedCurrency === 'PHP' ? 'selected' : ''}>Philippine Peso (₱)</option>
-            </select>
-          </div>
-          <div class="form-group"><label class="form-label">Timezone</label><select class="form-select"><option>Asia/Manila (PHT +8)</option><option style="color:black;">IST (India Standard Time)</option></select></div>
+          <div class="form-group"><label class="form-label">Default Currency</label><select class="form-select"><option>PHP (₱)</option><option>USD ($)</option></select></div>
+          <div class="form-group"><label class="form-label">Timezone</label><select class="form-select"><option>Asia/Manila (PHT +8)</option></select></div>
           <div class="form-group"><label class="form-label">License Expiry Alert (days before)</label><input class="form-input" type="number" value="60"></div>
           <button class="btn btn-primary btn-sm" onclick="showToast('Settings saved!','success')">Save Settings</button>
         </div>
@@ -968,31 +972,4 @@ document.addEventListener('click', e => {
   if (!e.target.closest('.dropdown') && !e.target.closest('.icon-btn')) {
     closeAllDropdowns();
   }
-}
-
-);
-
-// ======================== PARTICLES ========================
-
-function createParticles() {
-  const container = document.getElementById('particles');
-  if (!container) return;
-
-  for (let i = 0; i < 35; i++) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-
-    const size = Math.random() * 6 + 4;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-
-    particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.top = Math.random() * 100 + 'vh';
-
-    particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
-    particle.style.animationDelay = Math.random() * 10 + 's';
-
-    container.appendChild(particle);
-  }
-}
-document.addEventListener('DOMContentLoaded', createParticles);
+});
