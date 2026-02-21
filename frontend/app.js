@@ -204,7 +204,7 @@ function doRegister() {
   }
 
   // Success — auto-login with registered role
-  showToast(`Welcome to FleetFlow, ${name.split(' ')[0]}! 🎉`, 'success');
+  showToast(`Welcome to TranifyFlow, ${name.split(' ')[0]}! 🎉`, 'success');
   setTimeout(() => {
     document.getElementById('login-role').value = role;
     doLogin();
