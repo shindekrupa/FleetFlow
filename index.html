@@ -205,140 +205,167 @@
 <!-- ==================== AUTH SCREEN ==================== -->
 <div id="auth-screen">
   <div class="auth-grid-bg"></div>
-  <div class="auth-card">
-    <div class="auth-logo">Fleet<span>Flow</span></div>
-    <div class="auth-tagline">Enterprise Fleet Management</div>
-    <div class="auth-title">Welcome back</div>
-    <div class="auth-sub">Sign in to your account to continue</div>
+  <div class="particles" id="particles"></div>
+  <div class="auth-wrapper">
+    
+    <!-- LEFT PANEL -->
+    <div class="auth-left">
+      <div class="auth-left-content">
+        <div class="auth-left-logo">Fleet<span>Flow</span></div>
+        <h2>Smarter Fleet Operations</h2>
+        <p>
+          Real-time tracking, intelligent dispatch, predictive maintenance, and financial analytics — 
+          all in one unified enterprise dashboard.
+        </p>
 
-    <div class="form-group">
-      <label class="form-label">Email Address</label>
-      <input class="form-input" type="email" id="login-email" placeholder="you@company.com" value="admin@fleetflow.io">
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Password</label>
-      <input class="form-input" type="password" id="login-password" placeholder="••••••••" value="password">
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Role <span style="color:var(--text3); font-weight:400;">(or auto-detect from email)</span></label>
-      <select class="form-select" id="login-role">
-        <option value="admin">Administrator</option>
-        <option value="fleet_manager">Fleet Manager</option>
-        <option value="dispatcher">Dispatcher</option>
-        <option value="safety_officer">Safety Officer</option>
-        <option value="financial_analyst">Financial Analyst</option>
-        <option value="driver">Driver (Delivery Personnel)</option>
-      </select>
-    </div>
-
-    <div class="auth-extras">
-      <label class="check-wrap">
-        <input type="checkbox" checked>
-        Remember me
-      </label>
-      <a href="#" class="link">Forgot password?</a>
-    </div>
-
-    <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In →</button>
-
-    <div class="demo-accounts">
-      <div class="demo-title">Quick Access — Demo Accounts</div>
-      <div class="demo-grid">
-        <div class="demo-btn" onclick="quickLogin('admin')">👑 Admin</div>
-        <div class="demo-btn" onclick="quickLogin('fleet_manager')">🚛 Fleet Mgr</div>
-        <div class="demo-btn" onclick="quickLogin('dispatcher')">📡 Dispatcher</div>
-        <div class="demo-btn" onclick="quickLogin('safety_officer')">🛡️ Safety</div>
-        <div class="demo-btn" onclick="quickLogin('financial_analyst')">📊 Finance</div>
-        <div class="demo-btn" onclick="quickLogin('driver')">🚗 Driver</div>
+        <div class="auth-features">
+          <div>🚛 Live Vehicle Monitoring</div>
+          <div>📊 Advanced Analytics</div>
+          <div>🔐 Secure Role-Based Access</div>
+        </div>
       </div>
     </div>
 
-    <div style="text-align:center; margin-top:16px;">
-      <a href="#" class="link" onclick="hidAuth(); return false;">← Back to website</a>
+    <!-- RIGHT PANEL -->
+    <div class="auth-card">
+      <div class="auth-card">
+      <div class="auth-logo">Fleet<span>Flow</span></div>
+      <div class="auth-tagline">Enterprise Fleet Management</div>
+      <div class="auth-title">Welcome back</div>
+      <div class="auth-sub">Sign in to your account to continue</div>
+
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" id="login-email" placeholder="you@company.com" value="admin@fleetflow.io">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" id="login-password" placeholder="••••••••" value="password">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Role <span style="color:var(--text3); font-weight:400;">(or auto-detect from email)</span></label>
+        <select class="form-select" id="login-role">
+          <option value="admin" style="color:black;">Administrator</option>
+          <option value="fleet_manager" style="color:black;">Fleet Manager</option>
+          <option value="dispatcher" style="color:black;">Dispatcher</option>
+          <option value="safety_officer" style="color:black;">Safety Officer</option>
+          <option value="financial_analyst" style="color:black;">Financial Analyst</option>
+          <option value="driver" style="color:black;">Driver (Delivery Personnel)</option>
+        </select>
+      </div>
+
+      <div class="auth-extras">
+        <label class="check-wrap">
+          <input type="checkbox" checked style="color:black;">
+          Remember me
+          </label>
+          <a href="#" class="link">Forgot password?</a>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In →</button>
+
+        <div class="demo-accounts">
+          <div class="demo-title">Quick Access — Demo Accounts</div>
+          <div class="demo-grid">
+            <div class="demo-btn" onclick="quickLogin('admin')">👑 Admin</div>
+            <div class="demo-btn" onclick="quickLogin('fleet_manager')">🚛 Fleet Mgr</div>
+            <div class="demo-btn" onclick="quickLogin('dispatcher')">📡 Dispatcher</div>
+            <div class="demo-btn" onclick="quickLogin('safety_officer')">🛡️ Safety</div>
+            <div class="demo-btn" onclick="quickLogin('financial_analyst')">📊 Finance</div>
+            <div class="demo-btn" onclick="quickLogin('driver')">🚗 Driver</div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:16px;">
+          <a href="#" class="link" onclick="hidAuth(); return false;">← Back to website</a>
+        </div>
+      </div> 
+      </div>
+
     </div>
+
   </div>
-</div>
 
-<!-- ==================== APP ==================== -->
-<div id="app">
-  <div class="app-shell">
+  <!-- ==================== APP ==================== -->
+  <div id="app">
+    <div class="app-shell">
 
-    <!-- SIDEBAR -->
-    <nav class="sidebar" id="sidebar">
-      <div class="sidebar-logo">Fleet<span>Flow</span></div>
-      <div id="sidebar-menu"></div>
-      <div class="sidebar-bottom">
-        <div class="user-info" onclick="toggleDropdown('user-dropdown')">
-          <div class="avatar" id="user-avatar">A</div>
-          <div>
-            <div class="user-name" id="user-name-display">Admin User</div>
-            <div class="user-role" id="user-role-display">Administrator</div>
+      <!-- SIDEBAR -->
+      <nav class="sidebar" id="sidebar">
+        <div class="sidebar-logo">Fleet<span>Flow</span></div>
+        <div id="sidebar-menu"></div>
+        <div class="sidebar-bottom">
+          <div class="user-info" onclick="toggleDropdown('user-dropdown')">
+            <div class="avatar" id="user-avatar">A</div>
+            <div>
+              <div class="user-name" id="user-name-display">Admin User</div>
+              <div class="user-role" id="user-role-display">Administrator</div>
+            </div>
+          </div>
+          <div class="dropdown-menu" id="user-dropdown">
+            <div class="dropdown-item">👤 Profile Settings</div>
+            <div class="dropdown-item">🌙 Dark Mode (Coming Soon)</div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item" onclick="doLogout()" style="color:var(--danger)">🚪 Sign Out</div>
           </div>
         </div>
-        <div class="dropdown-menu" id="user-dropdown">
-          <div class="dropdown-item">👤 Profile Settings</div>
-          <div class="dropdown-item">🌙 Dark Mode (Coming Soon)</div>
-          <div class="dropdown-divider"></div>
-          <div class="dropdown-item" onclick="doLogout()" style="color:var(--danger)">🚪 Sign Out</div>
-        </div>
-      </div>
-    </nav>
+      </nav>
 
-    <!-- MAIN -->
-    <div class="main-area">
+      <!-- MAIN -->
+      <div class="main-area">
 
-      <!-- TOPBAR -->
-      <div class="topbar">
-        <div class="topbar-title" id="page-title">Command Center</div>
-        <div class="topbar-right">
-          <div class="dropdown">
-            <button class="icon-btn" onclick="toggleDropdown('notif-dropdown')" title="Notifications">
-              🔔
-              <span class="notif-dot"></span>
-            </button>
-            <div class="dropdown-menu" id="notif-dropdown" style="min-width:280px; right:0;">
-              <div style="padding:12px 16px; border-bottom:1px solid var(--border);">
-                <strong style="font-size:14px;">Notifications</strong>
+        <!-- TOPBAR -->
+        <div class="topbar">
+          <div class="topbar-title" id="page-title">Command Center</div>
+          <div class="topbar-right">
+            <div class="dropdown">
+              <button class="icon-btn" onclick="toggleDropdown('notif-dropdown')" title="Notifications">
+                🔔
+                <span class="notif-dot"></span>
+              </button>
+              <div class="dropdown-menu" id="notif-dropdown" style="min-width:280px; right:0;">
+                <div style="padding:12px 16px; border-bottom:1px solid var(--border);">
+                  <strong style="font-size:14px;">Notifications</strong>
+                </div>
+                <div class="dropdown-item">⚠️ TRK-004 maintenance overdue</div>
+                <div class="dropdown-item">📋 License expiring: John Doe (3d)</div>
+                <div class="dropdown-item">✅ Trip #TRP-0088 completed</div>
+                <div class="dropdown-item" style="font-size:12px; color:var(--accent); justify-content:center;">View all notifications</div>
               </div>
-              <div class="dropdown-item">⚠️ TRK-004 maintenance overdue</div>
-              <div class="dropdown-item">📋 License expiring: John Doe (3d)</div>
-              <div class="dropdown-item">✅ Trip #TRP-0088 completed</div>
-              <div class="dropdown-item" style="font-size:12px; color:var(--accent); justify-content:center;">View all notifications</div>
             </div>
-          </div>
-          <div class="dropdown">
-            <button class="icon-btn" onclick="toggleDropdown('quick-dropdown')" title="Quick Actions">⚙️</button>
-            <div class="dropdown-menu" id="quick-dropdown">
-              <div class="dropdown-item" onclick="openPanel('add-vehicle-panel')">🚛 Add Vehicle</div>
-              <div class="dropdown-item" onclick="openPanel('add-trip-panel')">📦 Create Trip</div>
-              <div class="dropdown-item" onclick="openPanel('add-driver-panel')">👤 Add Driver</div>
-              <div class="dropdown-divider"></div>
-              <div class="dropdown-item">📤 Export Report</div>
+            <div class="dropdown">
+              <button class="icon-btn" onclick="toggleDropdown('quick-dropdown')" title="Quick Actions">⚙️</button>
+              <div class="dropdown-menu" id="quick-dropdown">
+                <div class="dropdown-item" onclick="openPanel('add-vehicle-panel')">🚛 Add Vehicle</div>
+                <div class="dropdown-item" onclick="openPanel('add-trip-panel')">📦 Create Trip</div>
+                <div class="dropdown-item" onclick="openPanel('add-driver-panel')">👤 Add Driver</div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item">📤 Export Report</div>
+              </div>
             </div>
+            <div class="avatar" id="topbar-avatar" style="cursor:pointer;">A</div>
           </div>
-          <div class="avatar" id="topbar-avatar" style="cursor:pointer;">A</div>
         </div>
-      </div>
 
-      <!-- PAGE CONTENT -->
-      <div class="page-content">
-        <div id="page-dashboard" class="page active"></div>
-        <div id="page-vehicles" class="page"></div>
-        <div id="page-trips" class="page"></div>
-        <div id="page-maintenance" class="page"></div>
-        <div id="page-fuel" class="page"></div>
-        <div id="page-drivers" class="page"></div>
-        <div id="page-analytics" class="page"></div>
-        <div id="page-users" class="page"></div>
-        <div id="page-compliance" class="page"></div>
-        <div id="page-expenses" class="page"></div>
-        <div id="page-driver-view" class="page"></div>
-        <div id="page-settings" class="page"></div>
-      </div>
+        <!-- PAGE CONTENT -->
+        <div class="page-content">
+          <div id="page-dashboard" class="page active"></div>
+          <div id="page-vehicles" class="page"></div>
+          <div id="page-trips" class="page"></div>
+          <div id="page-maintenance" class="page"></div>
+          <div id="page-fuel" class="page"></div>
+          <div id="page-drivers" class="page"></div>
+          <div id="page-analytics" class="page"></div>
+          <div id="page-users" class="page"></div>
+          <div id="page-compliance" class="page"></div>
+          <div id="page-expenses" class="page"></div>
+          <div id="page-driver-view" class="page"></div>
+          <div id="page-settings" class="page"></div>
+        </div>
 
-    </div>
+      </div>
   </div>
 </div>
 

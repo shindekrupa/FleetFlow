@@ -890,4 +890,32 @@ document.addEventListener('click', e => {
   if (!e.target.closest('.dropdown') && !e.target.closest('.icon-btn')) {
     closeAllDropdowns();
   }
-});
+}
+
+);
+
+// ======================== PARTICLES ========================
+
+function createParticles() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+
+  for (let i = 0; i < 35; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+
+    const size = Math.random() * 6 + 4;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.top = Math.random() * 100 + 'vh';
+
+    particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+    particle.style.animationDelay = Math.random() * 10 + 's';
+
+    container.appendChild(particle);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', createParticles);
