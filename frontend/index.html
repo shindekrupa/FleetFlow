@@ -209,17 +209,16 @@
   <div class="auth-grid-bg"></div>
   <div class="particles" id="particles"></div>
   <div class="auth-wrapper">
-    
+
     <!-- LEFT PANEL -->
     <div class="auth-left">
       <div class="auth-left-content">
-        <div class="auth-left-logo">Fleet<span>Flow</span></div>
+        <div class="auth-left-logo">Transify<span>Flow</span></div>
         <h2>Smarter Fleet Operations</h2>
         <p>
-          Real-time tracking, intelligent dispatch, predictive maintenance, and financial analytics — 
+          Real-time tracking, intelligent dispatch, predictive maintenance, and financial analytics —
           all in one unified enterprise dashboard.
         </p>
-
         <div class="auth-features">
           <div>🚛 Live Vehicle Monitoring</div>
           <div>📊 Advanced Analytics</div>
@@ -227,12 +226,9 @@
         </div>
       </div>
     </div>
-  
 
-
-    <!-- RIGHT PANEL -->
-    <div class="auth-card">
-      <div class="auth-card">
+    <!-- RIGHT PANEL — LOGIN FORM -->
+    <div class="auth-card" id="login-panel">
       <div class="auth-logo">Fleet<span>Flow</span></div>
       <div class="auth-tagline">Enterprise Fleet Management</div>
       <div class="auth-title">Welcome back</div>
@@ -240,7 +236,7 @@
 
       <div class="form-group">
         <label class="form-label">Email Address</label>
-        <input class="form-input" type="email" id="login-email" placeholder="you@company.com" value="admin@fleetflow.io">
+        <input class="form-input" type="email" id="login-email" placeholder="you@company.in" value="rajesh@fleetflow.in">
       </div>
 
       <div class="form-group">
@@ -251,46 +247,135 @@
       <div class="form-group">
         <label class="form-label">Role <span style="color:var(--text3); font-weight:400;">(or auto-detect from email)</span></label>
         <select class="form-select" id="login-role">
-          <option value="admin" style="color:black;">Administrator</option>
-          <option value="fleet_manager" style="color:black;">Fleet Manager</option>
-          <option value="dispatcher" style="color:black;">Dispatcher</option>
-          <option value="safety_officer" style="color:black;">Safety Officer</option>
-          <option value="financial_analyst" style="color:black;">Financial Analyst</option>
-          <option value="driver" style="color:black;">Driver (Delivery Personnel)</option>
+          <option value="admin">Administrator</option>
+          <option value="fleet_manager">Fleet Manager</option>
+          <option value="dispatcher">Dispatcher</option>
+          <option value="safety_officer">Safety Officer</option>
+          <option value="financial_analyst">Financial Analyst</option>
+          <option value="driver">Driver (Delivery Personnel)</option>
         </select>
       </div>
 
       <div class="auth-extras">
         <label class="check-wrap">
-          <input type="checkbox" checked style="color:black;">
+          <input type="checkbox" checked>
           Remember me
-          </label>
-          <a href="#" class="link">Forgot password?</a>
-        </div>
-
-        <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In →</button>
-
-        <div class="demo-accounts">
-          <div class="demo-title">Quick Access — Demo Accounts</div>
-          <div class="demo-grid">
-            <div class="demo-btn" onclick="quickLogin('admin')">👑 Admin</div>
-            <div class="demo-btn" onclick="quickLogin('fleet_manager')">🚛 Fleet Mgr</div>
-            <div class="demo-btn" onclick="quickLogin('dispatcher')">📡 Dispatcher</div>
-            <div class="demo-btn" onclick="quickLogin('safety_officer')">🛡️ Safety</div>
-            <div class="demo-btn" onclick="quickLogin('financial_analyst')">📊 Finance</div>
-            <div class="demo-btn" onclick="quickLogin('driver')">🚗 Driver</div>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-top:16px;">
-          <a href="#" class="link" onclick="hidAuth(); return false;">← Back to website</a>
-        </div>
-      </div> 
+        </label>
+        <a href="#" class="link">Forgot password?</a>
       </div>
 
+      <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In →</button>
+
+      <!-- DIVIDER -->
+      <div style="display:flex; align-items:center; gap:12px; margin:20px 0;">
+        <div style="flex:1; height:1px; background:var(--border);"></div>
+        <span style="font-size:12px; color:var(--text3);">OR</span>
+        <div style="flex:1; height:1px; background:var(--border);"></div>
+      </div>
+
+      <!-- BOTTOM LINKS -->
+      <div style="text-align:center;">
+        <p style="font-size:13px; color:var(--text2); margin-bottom:10px;">
+          New to FleetFlow?
+          <a href="#" class="link" onclick="showRegister(); return false;"><strong>Create an account</strong></a>
+        </p>
+        <a href="#" class="link" style="font-size:12px;" onclick="hidAuth(); return false;">← Back to website</a>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL — REGISTER FORM (hidden by default) -->
+    <div class="auth-card" id="register-panel" style="display:none; overflow-y:auto; max-height:90vh;">
+      <div class="auth-logo">Fleet<span>Flow</span></div>
+      <div class="auth-tagline">Enterprise Fleet Management — India</div>
+      <div class="auth-title">Create Account</div>
+      <div class="auth-sub">Register to access your FleetFlow dashboard</div>
+
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input class="form-input" type="text" id="reg-name" placeholder="e.g. Arjun Sharma">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" id="reg-email" placeholder="yourname@company.in">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mobile Number</label>
+        <input class="form-input" type="tel" id="reg-mobile" placeholder="+91 98765 43210">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" id="reg-password" placeholder="Min. 8 characters">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Confirm Password</label>
+        <input class="form-input" type="password" id="reg-confirm" placeholder="Re-enter password">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Role</label>
+        <select class="form-select" id="reg-role">
+          <option value="">Select your role</option>
+          <option value="admin">Administrator</option>
+          <option value="fleet_manager">Fleet Manager</option>
+          <option value="dispatcher">Dispatcher</option>
+          <option value="safety_officer">Safety Officer</option>
+          <option value="financial_analyst">Financial Analyst</option>
+          <option value="driver">Driver</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">State</label>
+        <select class="form-select" id="reg-state">
+          <option value="">Select state</option>
+          <option>Maharashtra</option>
+          <option>Delhi</option>
+          <option>Karnataka</option>
+          <option>Tamil Nadu</option>
+          <option>Gujarat</option>
+          <option>Rajasthan</option>
+          <option>Uttar Pradesh</option>
+          <option>West Bengal</option>
+          <option>Telangana</option>
+          <option>Punjab</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
+        <input type="checkbox" id="reg-terms" style="margin-top:3px; flex-shrink:0; accent-color:var(--accent);">
+        <label for="reg-terms" style="font-size:13px; color:var(--text2); line-height:1.5;">
+          I agree to the <a href="#" class="link">Terms & Conditions</a> and
+          <a href="#" class="link">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button class="btn btn-primary btn-full" style="margin-top:8px;" onclick="doRegister()">
+        Create Account →
+      </button>
+
+      <!-- DIVIDER -->
+      <div style="display:flex; align-items:center; gap:12px; margin:20px 0;">
+        <div style="flex:1; height:1px; background:var(--border);"></div>
+        <span style="font-size:12px; color:var(--text3);">OR</span>
+        <div style="flex:1; height:1px; background:var(--border);"></div>
+      </div>
+
+      <!-- BOTTOM LINKS -->
+      <div style="text-align:center;">
+        <p style="font-size:13px; color:var(--text2); margin-bottom:10px;">
+          Already have an account?
+          <a href="#" class="link" onclick="showLogin(); return false;"><strong>Sign in here</strong></a>
+        </p>
+        <a href="#" class="link" style="font-size:12px;" onclick="hidAuth(); return false;">← Back to website</a>
+      </div>
     </div>
 
   </div>
+</div>
 
   <!-- ==================== APP ==================== -->
   <div id="app">

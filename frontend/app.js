@@ -165,46 +165,51 @@ function doLogout() {
   showToast('You have been signed out.', 'success');
 }
 
-// ==================== AUTH ====================
+// ======================== REGISTRATION ========================
 
-// Show the registration screen
 function showRegister() {
-  document.getElementById('auth-screen').style.display = 'none';
-  document.getElementById('register-screen').style.display = 'flex';
+  document.getElementById('login-panel').style.display = 'none';
+  document.getElementById('register-panel').style.display = 'block';
 }
 
-function hideRegister() {
-  document.getElementById('register-screen').style.display = 'none';
-  document.getElementById('auth-screen').style.display = 'flex';
+function showLogin() {
+  document.getElementById('register-panel').style.display = 'none';
+  document.getElementById('login-panel').style.display = 'block';
 }
 
-// Handle registration form submission
 function doRegister() {
-  const name = document.getElementById('reg-name').value;
-  const email = document.getElementById('reg-email').value;
-  const mobile = document.getElementById('reg-mobile').value;
+  const name     = document.getElementById('reg-name').value.trim();
+  const email    = document.getElementById('reg-email').value.trim();
+  const mobile   = document.getElementById('reg-mobile').value.trim();
   const password = document.getElementById('reg-password').value;
-  const confirm = document.getElementById('reg-confirm').value;
-  const role = document.getElementById('reg-role').value;
+  const confirm  = document.getElementById('reg-confirm').value;
+  const role     = document.getElementById('reg-role').value;
+  const terms    = document.getElementById('reg-terms').checked;
 
+  // Validation
+  if (!name || !email || !mobile || !password || !role) {
+    showToast('Please fill in all required fields.', 'danger'); return;
+  }
   if (password !== confirm) {
-    alert("Passwords do not match!");
-    return;
+    showToast('Passwords do not match.', 'danger'); return;
+  }
+  if (password.length < 8) {
+    showToast('Password must be at least 8 characters.', 'warning'); return;
+  }
+  if (!terms) {
+    showToast('Please accept the Terms & Conditions.', 'warning'); return;
+  }
+  if (!/^[6-9]\d{9}$/.test(mobile.replace(/[\s+\-]/g, ''))) {
+    showToast('Please enter a valid Indian mobile number.', 'warning'); return;
   }
 
-  if (!role) {
-    alert("Please select a role.");
-    return;
-  }
-
-  // For now, just simulate success
-  alert(`Account created for ${name} (${role})`);
-
-  // Optionally switch back to login after registration
-  hideRegister();
-  showAuth();
+  // Success — auto-login with registered role
+  showToast(`Welcome to FleetFlow, ${name.split(' ')[0]}! 🎉`, 'success');
+  setTimeout(() => {
+    document.getElementById('login-role').value = role;
+    doLogin();
+  }, 1200);
 }
-
 // ======================== NAVIGATION ========================
 function buildSidebar() {
   const menu = currentUser.menu;
