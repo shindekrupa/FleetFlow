@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Transify - ALL IN ONE LOGISTIC PLATFORM
 # 🚛 FleetFlow
 
@@ -96,3 +97,20 @@ Six distinct roles, each with a tailored dashboard and permissions:
 ## 📄 License
 
 This project is for internal/educational use. See `LICENSE` for details.
+=======
+
+# FleetFlow Backend (Flask + MySQL)
+
+## Setup
+
+1. Create MySQL DB
+   CREATE DATABASE fleetflow;
+
+2. Update config.py with MySQL username/password
+
+3. Install dependencies
+   pip install -r requirements.txt
+
+4. Run server
+   python run.py
+>>>>>>> 810d4d5bd1eb13d2cf3463a2b04d7e44dc60cc8f
