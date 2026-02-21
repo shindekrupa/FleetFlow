@@ -178,13 +178,13 @@ function showLogin() {
 }
 
 function doRegister() {
-  const name     = document.getElementById('reg-name').value.trim();
-  const email    = document.getElementById('reg-email').value.trim();
-  const mobile   = document.getElementById('reg-mobile').value.trim();
+  const name = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const mobile = document.getElementById('reg-mobile').value.trim();
   const password = document.getElementById('reg-password').value;
-  const confirm  = document.getElementById('reg-confirm').value;
-  const role     = document.getElementById('reg-role').value;
-  const terms    = document.getElementById('reg-terms').checked;
+  const confirm = document.getElementById('reg-confirm').value;
+  const role = document.getElementById('reg-role').value;
+  const terms = document.getElementById('reg-terms').checked;
 
   // Validation
   if (!name || !email || !mobile || !password || !role) {
@@ -335,10 +335,10 @@ function renderDashboard(el) {
         </div>
         <div style="padding:16px 24px 8px;">
           <div class="mini-bar-chart" style="height:160px; align-items:flex-end; gap:8px; padding:0;">
-            ${[65,80,55,90,70,85,60].map((h,i) => `<div class="mini-bar" style="height:${h}%; background:${i===5?'var(--accent)':'rgba(37,99,235,0.3)'}; border-radius:4px 4px 0 0; flex:1;" title="${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]}: ${h}%"></div>`).join('')}
+            ${[65, 80, 55, 90, 70, 85, 60].map((h, i) => `<div class="mini-bar" style="height:${h}%; background:${i === 5 ? 'var(--accent)' : 'rgba(37,99,235,0.3)'}; border-radius:4px 4px 0 0; flex:1;" title="${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][i]}: ${h}%"></div>`).join('')}
           </div>
           <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:11px; color:var(--text3);">
-            ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<span>${d}</span>`).join('')}
+            ${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(d => `<span>${d}</span>`).join('')}
           </div>
         </div>
         <div style="padding:8px 24px 20px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; text-align:center; border-top:1px solid var(--border); margin-top:8px;">
@@ -360,13 +360,13 @@ function renderDashboard(el) {
         </tr></thead>
         <tbody>
           ${[
-            ['TRK-001','Truck','John Santos','North','On Trip','45,210 km','2 min ago'],
-            ['TRK-002','Truck','Maria Cruz','Metro','Available','62,100 km','5 min ago'],
-            ['TRK-003','Van','Pedro Reyes','South','Available','18,450 km','12 min ago'],
-            ['TRK-004','Truck','—','Metro','In Shop','88,300 km','1 hr ago'],
-            ['TRK-005','Pickup','Ana Gonzalez','North','On Trip','34,780 km','1 min ago'],
-            ['TRK-006','Van','Rico Manalo','South','Suspended','91,200 km','3 hr ago'],
-          ].map(([id,type,driver,region,status,odo,updated]) => `
+      ['MH-12-AB-1234', 'Truck', 'Amit Sharma', 'Mumbai', 'On Trip', '45,210 km', '2 min ago'],
+      ['DL-01-CD-5678', 'Truck', 'Vikram Singh', 'Delhi', 'Available', '62,100 km', '5 min ago'],
+      ['KA-03-EF-9012', 'Van', 'Ravi Pillai', 'Bengaluru', 'Available', '18,450 km', '12 min ago'],
+      ['GJ-05-GH-3456', 'Truck', '—', 'Ahmedabad', 'In Shop', '88,300 km', '1 hr ago'],
+      ['TN-09-IJ-7890', 'Pickup', 'Sunita Devi', 'Chennai', 'On Trip', '34,780 km', '1 min ago'],
+      ['RJ-14-KL-2345', 'Van', 'Mohan Patel', 'Jaipur', 'Suspended', '91,200 km', '3 hr ago'],
+    ].map(([id, type, driver, region, status, odo, updated]) => `
             <tr>
               <td class="td-bold td-mono">${id}</td>
               <td>${type}</td>
@@ -398,14 +398,15 @@ function renderVehicles(el) {
           <th>Plate / ID</th><th>Make & Model</th><th>Capacity</th><th>Odometer</th><th>Status</th><th>Region</th><th>Actions</th>
         </tr></thead>
         <tbody>
-          ${[
-            ['TRK-001','ABC 1234','Isuzu NPR 300','3,000 kg','45,210 km','On Trip','Metro'],
-            ['TRK-002','XYZ 5678','Mitsubishi Canter','2,500 kg','62,100 km','Available','North'],
-            ['TRK-003','DEF 9012','Toyota Hilux','1,200 kg','18,450 km','Available','South'],
-            ['TRK-004','GHI 3456','Isuzu ELF','2,000 kg','88,300 km','In Shop','Metro'],
-            ['TRK-005','JKL 7890','Ford Ranger','1,000 kg','34,780 km','On Trip','North'],
-            ['TRK-006','MNO 2345','Nissan Urvan','1,500 kg','91,200 km','Suspended','South'],
-          ].map(([id,plate,model,cap,odo,status,region]) => `
+          ${// REPLACE the vehicles array in renderVehicles():
+    [
+      ['MH-12-AB-1234', 'Tata LPT 1618', '3,000 kg', '45,210 km', 'On Trip', 'Mumbai'],
+      ['DL-01-CD-5678', 'Ashok Leyland Dost', '2,500 kg', '62,100 km', 'Available', 'Delhi'],
+      ['KA-03-EF-9012', 'Mahindra Bolero Pik-Up', '1,200 kg', '18,450 km', 'Available', 'Bengaluru'],
+      ['GJ-05-GH-3456', 'Eicher Pro 2049', '2,000 kg', '88,300 km', 'In Shop', 'Ahmedabad'],
+      ['TN-09-IJ-7890', 'Tata Ace Gold', '1,000 kg', '34,780 km', 'On Trip', 'Chennai'],
+      ['RJ-14-KL-2345', 'Force Traveller', '1,500 kg', '91,200 km', 'Suspended', 'Jaipur'],
+    ].map(([id, plate, model, cap, odo, status, region]) => `
             <tr>
               <td><div class="td-bold">${id}</div><div class="td-sub td-mono">${plate}</div></td>
               <td>${model}</td>
@@ -416,7 +417,7 @@ function renderVehicles(el) {
               <td><div class="action-btns">
                 <button class="tbl-btn tbl-btn-blue" onclick="showToast('Editing vehicle...','success')">Edit</button>
                 <button class="tbl-btn" onclick="confirmAction('Set to Available?','This will make the vehicle available for dispatch.', 'Set Available')">Status</button>
-                ${currentRole==='admin'?'<button class="tbl-btn tbl-btn-red" onclick="confirmAction(\'Delete Vehicle?\',\'This cannot be undone.\',\'Delete\')">Delete</button>':''}
+                ${currentRole === 'admin' ? '<button class="tbl-btn tbl-btn-red" onclick="confirmAction(\'Delete Vehicle?\',\'This cannot be undone.\',\'Delete\')">Delete</button>' : ''}
               </div></td>
             </tr>
           `).join('')}
@@ -427,7 +428,7 @@ function renderVehicles(el) {
 }
 
 function renderTrips(el) {
-  const lifecycle = ['Draft','Dispatched','In Transit','Completed','Cancelled'];
+  const lifecycle = ['Draft', 'Dispatched', 'In Transit', 'Completed', 'Cancelled'];
   el.innerHTML = `
     <div class="alert alert-warning">🔒 Validation active: Trips with expired driver licenses, over-capacity cargo, or vehicles in maintenance will be blocked.</div>
 
@@ -436,11 +437,11 @@ function renderTrips(el) {
         <div><div class="card-title">Trip Lifecycle</div></div>
       </div>
       <div style="display:flex; gap:0; padding:20px 24px;">
-        ${lifecycle.map((stage,i) => `
+        ${lifecycle.map((stage, i) => `
           <div style="flex:1; text-align:center; position:relative;">
-            <div style="width:36px; height:36px; border-radius:50%; background:${i<3?'var(--accent)':'var(--border)'}; color:${i<3?'white':'var(--text3)'}; display:flex; align-items:center; justify-content:center; margin:0 auto 8px; font-size:14px; font-weight:700; position:relative; z-index:1;">${i+1}</div>
-            <div style="font-size:12px; font-weight:600; color:${i<3?'var(--navy)':'var(--text3)'};">${stage}</div>
-            ${i<lifecycle.length-1?`<div style="position:absolute; top:18px; left:50%; right:-50%; height:2px; background:${i<2?'var(--accent)':'var(--border)'};"></div>`:''}
+            <div style="width:36px; height:36px; border-radius:50%; background:${i < 3 ? 'var(--accent)' : 'var(--border)'}; color:${i < 3 ? 'white' : 'var(--text3)'}; display:flex; align-items:center; justify-content:center; margin:0 auto 8px; font-size:14px; font-weight:700; position:relative; z-index:1;">${i + 1}</div>
+            <div style="font-size:12px; font-weight:600; color:${i < 3 ? 'var(--navy)' : 'var(--text3)'};">${stage}</div>
+            ${i < lifecycle.length - 1 ? `<div style="position:absolute; top:18px; left:50%; right:-50%; height:2px; background:${i < 2 ? 'var(--accent)' : 'var(--border)'};"></div>` : ''}
           </div>
         `).join('')}
       </div>
@@ -460,12 +461,12 @@ function renderTrips(el) {
         </tr></thead>
         <tbody>
           ${[
-            ['TRP-0085','Metro → North','TRK-001','John Santos','2,200 kg','In Transit','Feb 21, 08:00'],
-            ['TRP-0086','South → Metro','TRK-005','Ana Gonzalez','800 kg','In Transit','Feb 21, 09:30'],
-            ['TRP-0087','North → South','TRK-003','Pedro Reyes','1,100 kg','Dispatched','Feb 21, 14:00'],
-            ['TRP-0088','Metro → South','TRK-002','Maria Cruz','500 kg','Completed','Feb 20, 07:00'],
-            ['TRP-0089','South → North','TRK-006','—','—','Cancelled','Feb 20, 12:00'],
-          ].map(([id,route,veh,driver,cargo,status,sched]) => `
+      ['TRP-0085', 'Mumbai → Delhi', 'MH-12-AB-1234', 'Amit Sharma', '2,200 kg', 'In Transit', '21 Feb, 08:00'],
+      ['TRP-0086', 'Chennai → Bengaluru', 'TN-09-IJ-7890', 'Sunita Devi', '800 kg', 'In Transit', '21 Feb, 09:30'],
+      ['TRP-0087', 'Delhi → Jaipur', 'DL-01-CD-5678', 'Vikram Singh', '1,100 kg', 'Dispatched', '21 Feb, 14:00'],
+      ['TRP-0088', 'Bengaluru → Hyderabad', 'KA-03-EF-9012', 'Ravi Pillai', '500 kg', 'Completed', '20 Feb, 07:00'],
+      ['TRP-0089', 'Jaipur → Ahmedabad', 'RJ-14-KL-2345', '—', '—', 'Cancelled', '20 Feb, 12:00'],
+    ].map(([id, route, veh, driver, cargo, status, sched]) => `
             <tr>
               <td class="td-bold td-mono">${id}</td>
               <td style="font-weight:600;">${route}</td>
@@ -476,7 +477,7 @@ function renderTrips(el) {
               <td class="td-sub">${sched}</td>
               <td><div class="action-btns">
                 <button class="tbl-btn tbl-btn-blue">View</button>
-                ${status==='Dispatched'||status==='In Transit'?'<button class="tbl-btn" onclick="showToast(\'Trip status updated!\',\'success\')">Update</button>':''}
+                ${status === 'Dispatched' || status === 'In Transit' ? '<button class="tbl-btn" onclick="showToast(\'Trip status updated!\',\'success\')">Update</button>' : ''}
               </div></td>
             </tr>
           `).join('')}
@@ -498,12 +499,12 @@ function renderMaintenance(el) {
         <thead><tr><th>Vehicle</th><th>Service Type</th><th>Date</th><th>Cost</th><th>Technician</th><th>Status</th><th>Next Due</th></tr></thead>
         <tbody>
           ${[
-            ['TRK-004','Full Service + Oil Change','Feb 15, 2025','₱12,500','AutoCare PH','In Progress','Mar 15, 2025'],
-            ['TRK-001','Tire Replacement','Feb 10, 2025','₱8,200','TireKing','Completed','—'],
-            ['TRK-006','Engine Overhaul','Feb 08, 2025','₱45,000','AutoCare PH','In Progress','—'],
-            ['TRK-003','Brake Pad Replacement','Feb 01, 2025','₱3,500','QuickFix','Completed','Aug 01, 2025'],
-            ['TRK-002','Air Filter + Belts','Jan 22, 2025','₱2,100','AutoCare PH','Completed','Jul 22, 2025'],
-          ].map(([veh,type,date,cost,tech,status,next]) => `
+      ['GJ-05-GH-3456', 'Full Service + Oil Change', '15 Feb 2025', '₹8,500', 'Tata Authorised Service', 'In Progress', '15 Mar 2025'],
+      ['MH-12-AB-1234', 'Tyre Replacement', '10 Feb 2025', '₹12,000', 'Apollo Tyres Mumbai', 'Completed', '—'],
+      ['RJ-14-KL-2345', 'Engine Overhaul', '08 Feb 2025', '₹55,000', 'Ashok Leyland Workshop', 'In Progress', '—'],
+      ['KA-03-EF-9012', 'Brake Pad Replacement', '01 Feb 2025', '₹3,200', 'Bosch Service Bengaluru', 'Completed', '01 Aug 2025'],
+      ['DL-01-CD-5678', 'Air Filter + Belts', '22 Jan 2025', '₹1,800', 'Leyland Service Delhi', 'Completed', '22 Jul 2025'],
+    ].map(([veh, type, date, cost, tech, status, next]) => `
             <tr>
               <td class="td-bold td-mono">${veh}</td>
               <td>${type}</td>
@@ -523,8 +524,8 @@ function renderMaintenance(el) {
 function renderFuel(el) {
   el.innerHTML = `
     <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);">
-      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Total Fuel Cost</span><span>⛽</span></div><div class="kpi-value">₱284K</div><div class="kpi-change kpi-down">↑ 8% this month</div></div>
-      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Avg Cost/km</span><span>📏</span></div><div class="kpi-value">₱12.4</div><div class="kpi-change kpi-up">↓ 3% improved</div></div>
+      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Total Fuel Cost</span><span>⛽</span></div><div class="kpi-value">Rs. 284K</div><div class="kpi-change kpi-down">↑ 8% this month</div></div>
+      <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Avg Cost/km</span><span>📏</span></div><div class="kpi-value">Rs. 12.4</div><div class="kpi-change kpi-up">↓ 3% improved</div></div>
       <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Fuel Efficiency</span><span>🌿</span></div><div class="kpi-value">8.2</div><div class="kpi-change" style="color:var(--text3)">km per liter avg</div></div>
       <div class="kpi-card"><div class="kpi-header"><span class="kpi-label">Total Liters</span><span>🪣</span></div><div class="kpi-value">22,900</div><div class="kpi-change kpi-down">This month</div></div>
     </div>
@@ -536,13 +537,14 @@ function renderFuel(el) {
       <table>
         <thead><tr><th>Date</th><th>Vehicle</th><th>Driver</th><th>Liters</th><th>Cost</th><th>Station</th><th>Receipt</th></tr></thead>
         <tbody>
-          ${[
-            ['Feb 21','TRK-001','John Santos','65L','₱4,420','Petron EDSA','✅'],
-            ['Feb 21','TRK-005','Ana Gonzalez','40L','₱2,720','Shell Quezon','✅'],
-            ['Feb 20','TRK-003','Pedro Reyes','55L','₱3,740','Caltex Makati','✅'],
-            ['Feb 20','TRK-002','Maria Cruz','70L','₱4,760','Petron Ortigas','⬆️ Upload'],
-            ['Feb 19','TRK-001','John Santos','60L','₱4,080','Shell EDSA','✅'],
-          ].map(([date,veh,driver,liters,cost,station,receipt]) => `
+          ${// REPLACE the fuel array:
+    [
+      ['21 Feb', 'MH-12-AB-1234', 'Amit Sharma', '65L', '₹5,720', 'HP Petrol Pump, Andheri', '✅'],
+      ['21 Feb', 'TN-09-IJ-7890', 'Sunita Devi', '40L', '₹3,520', 'Indian Oil, T.Nagar', '✅'],
+      ['20 Feb', 'KA-03-EF-9012', 'Ravi Pillai', '55L', '₹4,840', 'BPCL, Koramangala', '✅'],
+      ['20 Feb', 'DL-01-CD-5678', 'Vikram Singh', '70L', '₹6,160', 'HP Petrol Pump, Rohini', '⬆️ Upload'],
+      ['19 Feb', 'MH-12-AB-1234', 'Amit Sharma', '60L', '₹5,280', 'Indian Oil, Thane', '✅'],
+    ].map(([date, veh, driver, liters, cost, station, receipt]) => `
             <tr>
               <td class="td-sub">${date}</td>
               <td class="td-mono td-bold">${veh}</td>
@@ -573,21 +575,21 @@ function renderDrivers(el) {
         <thead><tr><th>Driver</th><th>License</th><th>Expiry</th><th>Safety Score</th><th>Trips</th><th>Status</th><th>Actions</th></tr></thead>
         <tbody>
           ${[
-            ['John Santos','LIC-00123','Feb 2026','92/100','142','On Duty'],
-            ['Maria Cruz','LIC-00456','Oct 2025','87/100','98','On Duty'],
-            ['Pedro Reyes','LIC-00789','Dec 2024','71/100','56','Off Duty'],
-            ['Ana Gonzalez','LIC-01012','Aug 2025','95/100','203','On Duty'],
-            ['Rico Manalo','LIC-01345','Jan 2024','45/100','78','Suspended'],
-          ].map(([name,lic,expiry,score,trips,status]) => {
-            const expired = expiry.includes('2024');
-            const expiringSoon = expiry.includes('2025') && !expiry.includes('Aug') && !expiry.includes('Oct');
-            return `<tr>
+      ['Amit Sharma', 'DL-MH-20180012', 'Feb 2027', '92/100', '142', 'On Duty'],
+      ['Vikram Singh', 'DL-DL-20190456', 'Oct 2026', '87/100', '98', 'On Duty'],
+      ['Ravi Pillai', 'DL-KA-20170789', 'Dec 2024', '71/100', '56', 'Off Duty'],
+      ['Sunita Devi', 'DL-TN-20201012', 'Aug 2026', '95/100', '203', 'On Duty'],
+      ['Mohan Patel', 'DL-RJ-20151345', 'Jan 2024', '45/100', '78', 'Suspended'],
+    ].map(([name, lic, expiry, score, trips, status]) => {
+      const expired = expiry.includes('2024');
+      const expiringSoon = expiry.includes('2025') && !expiry.includes('Aug') && !expiry.includes('Oct');
+      return `<tr>
               <td><div style="font-weight:600;">${name}</div><div class="td-sub td-mono">${lic}</div></td>
               <td class="td-mono">${lic}</td>
-              <td class="td-mono" style="color:${expired?'var(--danger)':expiringSoon?'var(--warning)':'inherit'}">${expiry} ${expired?'⚠️':''}</td>
+              <td class="td-mono" style="color:${expired ? 'var(--danger)' : expiringSoon ? 'var(--warning)' : 'inherit'}">${expiry} ${expired ? '⚠️' : ''}</td>
               <td>
                 <div style="display:flex;align-items:center;gap:8px;">
-                  <div class="progress-bar" style="width:60px;"><div class="progress-fill" style="width:${score.split('/')[0]}%;background:${parseInt(score)>80?'var(--success)':parseInt(score)>60?'var(--warning)':'var(--danger)'}"></div></div>
+                  <div class="progress-bar" style="width:60px;"><div class="progress-fill" style="width:${score.split('/')[0]}%;background:${parseInt(score) > 80 ? 'var(--success)' : parseInt(score) > 60 ? 'var(--warning)' : 'var(--danger)'}"></div></div>
                   <span class="td-mono" style="font-size:12px;">${score}</span>
                 </div>
               </td>
@@ -598,7 +600,7 @@ function renderDrivers(el) {
                 <button class="tbl-btn" onclick="confirmAction('Change Driver Status?','Update the duty status for this driver.','Update')">Status</button>
               </div></td>
             </tr>`;
-          }).join('')}
+    }).join('')}
         </tbody>
       </table>
     </div>
@@ -611,11 +613,11 @@ function renderAnalytics(el) {
       <div class="card">
         <div class="card-header"><div><div class="card-title">Fuel Efficiency</div><div class="card-sub">km/L by vehicle</div></div><button class="btn btn-ghost btn-sm" onclick="showToast('Exporting CSV...','success')">📤 Export CSV</button></div>
         <div style="padding:0 24px;">
-          ${[['TRK-001',8.2,10],['TRK-002',9.1,10],['TRK-003',7.4,10],['TRK-004',6.1,10],['TRK-005',8.8,10]].map(([v,val,max]) => `
+          ${[['TRK-001', 8.2, 10], ['TRK-002', 9.1, 10], ['TRK-003', 7.4, 10], ['TRK-004', 6.1, 10], ['TRK-005', 8.8, 10]].map(([v, val, max]) => `
             <div class="metric-row">
               <div class="metric-label">${v}</div>
               <div style="display:flex;align-items:center;gap:12px;flex:1;margin:0 16px;">
-                <div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:${val/max*100}%"></div></div>
+                <div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:${val / max * 100}%"></div></div>
               </div>
               <div class="metric-value">${val} km/L</div>
             </div>
@@ -627,11 +629,11 @@ function renderAnalytics(el) {
       <div class="card">
         <div class="card-header"><div><div class="card-title">Operational Cost</div><div class="card-sub">By vehicle — this month</div></div><button class="btn btn-ghost btn-sm" onclick="showToast('Exporting PDF...','success')">📄 Export PDF</button></div>
         <div style="padding:0 24px;">
-          ${[['TRK-001','₱42,800',85],['TRK-002','₱31,200',62],['TRK-003','₱18,500',37],['TRK-004','₱71,000',100],['TRK-005','₱24,100',48]].map(([v,cost,pct]) => `
+          ${[['TRK-001', '₱42,800', 85], ['TRK-002', '₱31,200', 62], ['TRK-003', '₱18,500', 37], ['TRK-004', '₱71,000', 100], ['TRK-005', '₱24,100', 48]].map(([v, cost, pct]) => `
             <div class="metric-row">
               <div class="metric-label">${v}</div>
               <div style="display:flex;align-items:center;gap:12px;flex:1;margin:0 16px;">
-                <div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:${pct}%;background:${pct>80?'var(--danger)':pct>60?'var(--warning)':'var(--success)'}"></div></div>
+                <div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:${pct}%;background:${pct > 80 ? 'var(--danger)' : pct > 60 ? 'var(--warning)' : 'var(--success)'}"></div></div>
               </div>
               <div class="metric-value">${cost}</div>
             </div>
@@ -645,7 +647,7 @@ function renderAnalytics(el) {
       <div class="card">
         <div class="card-header"><div><div class="card-title">Vehicle ROI</div><div class="card-sub">Revenue vs Cost ratio</div></div></div>
         <div style="padding:0 24px;">
-          ${[['TRK-001','3.2x','↑ Excellent'],['TRK-002','2.8x','↑ Good'],['TRK-003','1.9x','→ Average'],['TRK-004','0.4x','↓ Poor (In Shop)'],['TRK-005','2.5x','↑ Good']].map(([v,roi,trend]) => `
+          ${[['TRK-001', '3.2x', '↑ Excellent'], ['TRK-002', '2.8x', '↑ Good'], ['TRK-003', '1.9x', '→ Average'], ['TRK-004', '0.4x', '↓ Poor (In Shop)'], ['TRK-005', '2.5x', '↑ Good']].map(([v, roi, trend]) => `
             <div class="metric-row">
               <div class="metric-label">${v}</div>
               <div class="metric-value">${roi} <span style="font-size:11px; font-weight:400; color:var(--text3);">${trend}</span></div>
@@ -656,10 +658,10 @@ function renderAnalytics(el) {
       <div class="card">
         <div class="card-header"><div><div class="card-title">Maintenance Frequency</div><div class="card-sub">Services per vehicle per month</div></div></div>
         <div style="padding:0 24px;">
-          ${[['TRK-001',1,'Low'],['TRK-002',2,'Normal'],['TRK-003',1,'Low'],['TRK-004',4,'High ⚠️'],['TRK-005',1,'Low']].map(([v,freq,label]) => `
+          ${[['TRK-001', 1, 'Low'], ['TRK-002', 2, 'Normal'], ['TRK-003', 1, 'Low'], ['TRK-004', 4, 'High ⚠️'], ['TRK-005', 1, 'Low']].map(([v, freq, label]) => `
             <div class="metric-row">
               <div class="metric-label">${v}</div>
-              <div class="metric-value">${freq}x / month <span style="font-size:11px; color:${freq>2?'var(--danger)':'var(--success)'}; font-weight:600;">${label}</span></div>
+              <div class="metric-value">${freq}x / month <span style="font-size:11px; color:${freq > 2 ? 'var(--danger)' : 'var(--success)'}; font-weight:600;">${label}</span></div>
             </div>
           `).join('')}
         </div>
@@ -689,20 +691,20 @@ function renderUsers(el) {
         <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Last Login</th><th>Status</th><th>Actions</th></tr></thead>
         <tbody>
           ${[
-            ['Alex Rivera','alex@fleetflow.io','Administrator','2 min ago','Active'],
-            ['Carlos Mendoza','carlos@fleetflow.io','Fleet Manager','1 hr ago','Active'],
-            ['Rosa Jimenez','rosa@fleetflow.io','Dispatcher','30 min ago','Active'],
-            ['Lena Park','lena@fleetflow.io','Safety Officer','3 hr ago','Active'],
-            ['David Tan','david@fleetflow.io','Financial Analyst','Yesterday','Active'],
-            ['Juan Dela Cruz','juan@fleetflow.io','Driver','1 day ago','Active'],
-            ['Mark Torres','mark@fleetflow.io','Driver','5 days ago','Suspended'],
-          ].map(([name,email,role,login,status]) => `
+      ['Rajesh Kumar', 'rajesh@fleetflow.in', 'Administrator', '2 min ago', 'Active'],
+      ['Suresh Nair', 'suresh@fleetflow.in', 'Fleet Manager', '1 hr ago', 'Active'],
+      ['Priya Mehta', 'priya@fleetflow.in', 'Dispatcher', '30 min ago', 'Active'],
+      ['Anil Verma', 'anil@fleetflow.in', 'Safety Officer', '3 hr ago', 'Active'],
+      ['Deepa Iyer', 'deepa@fleetflow.in', 'Financial Analyst', 'Yesterday', 'Active'],
+      ['Ramesh Yadav', 'ramesh@fleetflow.in', 'Driver', '1 day ago', 'Active'],
+      ['Sunil Tiwari', 'sunil@fleetflow.in', 'Driver', '5 days ago', 'Suspended'],
+    ].map(([name, email, role, login, status]) => `
             <tr>
               <td><div style="font-weight:600;">${name}</div></td>
               <td class="td-sub">${email}</td>
               <td><span class="pill pill-blue">${role}</span></td>
               <td class="td-sub">${login}</td>
-              <td><span class="pill ${status==='Active'?'pill-success':'pill-danger'}">${status}</span></td>
+              <td><span class="pill ${status === 'Active' ? 'pill-success' : 'pill-danger'}">${status}</span></td>
               <td><div class="action-btns">
                 <button class="tbl-btn tbl-btn-blue" onclick="showToast('Edit user','success')">Edit</button>
                 <button class="tbl-btn" onclick="showToast('Role updated','success')">Role</button>
@@ -732,18 +734,17 @@ function renderCompliance(el) {
         <thead><tr><th>Driver</th><th>License</th><th>Expiry</th><th>Days Left</th><th>Status</th></tr></thead>
         <tbody>
           ${[
-            ['John Santos','LIC-00123','Feb 15, 2026',360,'Valid'],
-            ['Maria Cruz','LIC-00456','Oct 30, 2025',250,'Valid'],
-            ['Ana Gonzalez','LIC-01012','Aug 12, 2025',172,'Valid'],
-            ['Pedro Reyes','LIC-00789','Dec 20, 2024',30,'Expiring Soon'],
-            ['Rico Manalo','LIC-01345','Jan 15, 2024',-200,'Expired'],
-          ].map(([name,lic,expiry,days,status]) => `
+      ['Amit Sharma', 'DL-MH-20180012', '15 Feb 2027', 360, 'Valid'],
+      ['Vikram Singh', 'DL-DL-20190456', '30 Oct 2026', 250, 'Valid'],
+      ['Sunita Devi', 'DL-TN-20201012', '12 Aug 2026', 172, 'Valid'],
+      ['Ravi Pillai', 'DL-KA-20170789', '20 Dec 2024', 30, 'Expiring Soon'],]
+    ['Mohan Patel', 'DL-RJ-20151345', '15 Jan 2024', -200, 'Expired'].map(([name, lic, expiry, days, status]) => `
             <tr>
               <td style="font-weight:600;">${name}</td>
               <td class="td-mono">${lic}</td>
               <td>${expiry}</td>
-              <td class="td-mono" style="color:${days<0?'var(--danger)':days<60?'var(--warning)':'var(--success)'}; font-weight:700;">${days<0?`${Math.abs(days)}d overdue`:`${days} days`}</td>
-              <td>${days<0?'<span class="pill pill-danger">Expired</span>':days<60?'<span class="pill pill-warning">Expiring Soon</span>':'<span class="pill pill-success">Valid</span>'}</td>
+              <td class="td-mono" style="color:${days < 0 ? 'var(--danger)' : days < 60 ? 'var(--warning)' : 'var(--success)'}; font-weight:700;">${days < 0 ? `${Math.abs(days)}d overdue` : `${days} days`}</td>
+              <td>${days < 0 ? '<span class="pill pill-danger">Expired</span>' : days < 60 ? '<span class="pill pill-warning">Expiring Soon</span>' : '<span class="pill pill-success">Valid</span>'}</td>
             </tr>
           `).join('')}
         </tbody>
@@ -770,15 +771,15 @@ function renderExpenses(el) {
         <thead><tr><th>Date</th><th>Category</th><th>Vehicle</th><th>Description</th><th>Amount</th><th>Approved By</th></tr></thead>
         <tbody>
           ${[
-            ['Feb 21','Fuel','TRK-001','Petron EDSA – 65L','₱4,420','Auto-approved'],
-            ['Feb 20','Maintenance','TRK-004','Engine overhaul – AutoCare PH','₱45,000','Carlos Mendoza'],
-            ['Feb 20','Fuel','TRK-002','Shell Quezon – 70L','₱4,760','Auto-approved'],
-            ['Feb 19','Toll/Misc','TRK-005','NLEX + SCTEX tolls','₱850','Rosa Jimenez'],
-            ['Feb 19','Maintenance','TRK-006','Engine parts – AutoCare PH','₱28,500','Carlos Mendoza'],
-          ].map(([date,cat,veh,desc,amount,by]) => `
+      ['Feb 21', 'Fuel', 'TRK-001', 'Petron EDSA – 65L', '₱4,420', 'Auto-approved'],
+      ['Feb 20', 'Maintenance', 'TRK-004', 'Engine overhaul – AutoCare PH', '₱45,000', 'Carlos Mendoza'],
+      ['Feb 20', 'Fuel', 'TRK-002', 'Shell Quezon – 70L', '₱4,760', 'Auto-approved'],
+      ['Feb 19', 'Toll/Misc', 'TRK-005', 'NLEX + SCTEX tolls', '₱850', 'Rosa Jimenez'],
+      ['Feb 19', 'Maintenance', 'TRK-006', 'Engine parts – AutoCare PH', '₱28,500', 'Carlos Mendoza'],
+    ].map(([date, cat, veh, desc, amount, by]) => `
             <tr>
               <td class="td-sub">${date}</td>
-              <td><span class="pill ${cat==='Fuel'?'pill-blue':cat==='Maintenance'?'pill-warning':'pill-gray'}">${cat}</span></td>
+              <td><span class="pill ${cat === 'Fuel' ? 'pill-blue' : cat === 'Maintenance' ? 'pill-warning' : 'pill-gray'}">${cat}</span></td>
               <td class="td-mono td-bold">${veh}</td>
               <td>${desc}</td>
               <td class="td-mono" style="font-weight:700;">${amount}</td>
@@ -799,14 +800,14 @@ function renderDriverView(el) {
       <div class="driver-trip-header">
         <div>
           <div class="driver-trip-id">TRP-0085</div>
-          <div class="driver-trip-route">Metro → North Region</div>
+          <div class="driver-trip-route">Mumbai → Delhi </div>
         </div>
         <span class="pill pill-blue">In Transit</span>
       </div>
       <div class="trip-detail">🚛 Vehicle: TRK-001 (Isuzu NPR 300)</div>
-      <div class="trip-detail">📦 Cargo: Electronics — 2,200 kg</div>
-      <div class="trip-detail">📍 Pickup: Makati Warehouse</div>
-      <div class="trip-detail">📍 Delivery: North Hub Bulacan</div>
+      <div class="trip-detail">📦 Cargo: FMCG Goods — 2,200 kg</div>
+      <div class="trip-detail">📍 Pickup: Bhiwandi Warehouse, Maharashtra</div>
+      <div class="trip-detail">📍 Delivery: Naraina Industrial Area, Delhi</div>
       <div class="trip-detail">⏰ Scheduled: Feb 21, 2025 — 08:00 AM</div>
       <div class="timeline" style="margin-top:16px;">
         <div class="timeline-item"><div class="timeline-dot timeline-dot-active"></div><div class="timeline-text"><div class="timeline-label">Trip Started</div><div class="timeline-time">Feb 21 — 08:14 AM</div></div></div>
@@ -853,13 +854,13 @@ function renderSettings(el) {
         <div class="card-header"><div class="card-title">Integration Placeholders</div></div>
         <div style="padding:24px; display:flex; flex-direction:column; gap:12px;">
           ${[
-            ['🗺️','GPS / Telematics','Connect live GPS hardware'],
-            ['📱','SMS Notifications','Twilio or local SMS gateway'],
-            ['💼','Accounting Integration','QuickBooks / SAP'],
-            ['🏢','Multi-Branch Support','Multi-location management'],
-            ['🤖','Predictive Maintenance AI','ML failure prediction'],
-            ['🌙','Dark Mode','UI theme toggle'],
-          ].map(([icon,name,desc]) => `
+      ['🗺️', 'GPS / Telematics', 'Connect live GPS hardware'],
+      ['📱', 'SMS Notifications', 'Twilio or local SMS gateway'],
+      ['💼', 'Accounting Integration', 'QuickBooks / SAP'],
+      ['🏢', 'Multi-Branch Support', 'Multi-location management'],
+      ['🤖', 'Predictive Maintenance AI', 'ML failure prediction'],
+      ['🌙', 'Dark Mode', 'UI theme toggle'],
+    ].map(([icon, name, desc]) => `
             <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;border:1px solid var(--border);border-radius:10px;">
               <div style="display:flex;align-items:center;gap:10px;">
                 <span style="font-size:18px;">${icon}</span>
@@ -880,7 +881,7 @@ function statusPill(s) {
     'On Trip': 'pill-blue', 'Available': 'pill-success',
     'In Shop': 'pill-warning', 'Suspended': 'pill-danger', 'Retired': 'pill-gray'
   };
-  return `<span class="pill ${map[s]||'pill-gray'}">${s}</span>`;
+  return `<span class="pill ${map[s] || 'pill-gray'}">${s}</span>`;
 }
 
 function tripStatusPill(s) {
@@ -888,7 +889,7 @@ function tripStatusPill(s) {
     'Draft': 'pill-gray', 'Dispatched': 'pill-blue',
     'In Transit': 'pill-blue', 'Completed': 'pill-success', 'Cancelled': 'pill-danger'
   };
-  return `<span class="pill ${map[s]||'pill-gray'}">${s}</span>`;
+  return `<span class="pill ${map[s] || 'pill-gray'}">${s}</span>`;
 }
 
 function maintenanceStatusPill(s) {
@@ -899,7 +900,7 @@ function maintenanceStatusPill(s) {
 
 function driverStatusPill(s) {
   const map = { 'On Duty': 'pill-success', 'Off Duty': 'pill-gray', 'Suspended': 'pill-danger' };
-  return `<span class="pill ${map[s]||'pill-gray'}">${s}</span>`;
+  return `<span class="pill ${map[s] || 'pill-gray'}">${s}</span>`;
 }
 
 function filterTable(input, tableId) {
@@ -951,7 +952,7 @@ function showToast(message, type = 'success') {
   const toast = document.createElement('div');
   toast.className = `toast toast-${type}`;
   const icons = { success: '✅', danger: '❌', warning: '⚠️' };
-  toast.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${message}</span>`;
+  toast.innerHTML = `<span>${icons[type] || 'ℹ️'}</span><span>${message}</span>`;
   container.appendChild(toast);
   setTimeout(() => {
     toast.style.opacity = '0';
