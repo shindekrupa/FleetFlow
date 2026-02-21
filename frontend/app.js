@@ -323,11 +323,20 @@ function renderDashboard(el) {
             <div class="card-sub">Live vehicle status</div>
           </div>
         </div>
-        <div class="gps-placeholder">
-          <div style="font-size:36px; position:relative; z-index:1;">🗺️</div>
-          <div class="gps-label">Real-Time GPS Map</div>
-          <div class="gps-sub">Telematics integration — Coming soon</div>
-        </div>
+        <div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Fleet Status Overview</div>
+      <div class="card-sub">Live vehicle locations — GPS tracking</div>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <span class="pill pill-success" id="map-status-pill">● Live</span>
+      <button class="btn btn-ghost btn-sm" onclick="centerMapOnIndia()">📍 Reset View</button>
+    </div>
+  </div>
+  <!-- MAP CONTAINER -->
+  <div id="fleet-map" style="height:320px; width:100%; border-radius:0 0 14px 14px;"></div>
+</div>
       </div>
       <div class="card">
         <div class="card-header">
@@ -381,7 +390,12 @@ function renderDashboard(el) {
       </table>
     </div>
   `;
-}
+   setTimeout(() => {
+    initFleetMap();
+  }, 100);
+
+}        
+
 
 function renderVehicles(el) {
   el.innerHTML = `
@@ -911,6 +925,207 @@ function filterTable(input, tableId) {
   });
 }
 
+// ======================== MAP ========================
+let fleetMap = null;
+let vehicleMarkers = [];
+
+// Indian vehicle locations (lat, lng, details)
+const INDIAN_VEHICLES = [
+  {
+    reg: 'MH-12-AB-1234',
+    driver: 'Amit Sharma',
+    lat: 19.0760,
+    lng: 72.8777,
+    city: 'Mumbai',
+    status: 'On Trip',
+    cargo: 'FMCG Goods — 2,200 kg',
+    speed: '62 km/h'
+  },
+  {
+    reg: 'DL-01-CD-5678',
+    driver: 'Vikram Singh',
+    lat: 28.6139,
+    lng: 77.2090,
+    city: 'Delhi',
+    status: 'Available',
+    cargo: '—',
+    speed: '0 km/h'
+  },
+  {
+    reg: 'KA-03-EF-9012',
+    driver: 'Ravi Pillai',
+    lat: 12.9716,
+    lng: 77.5946,
+    city: 'Bengaluru',
+    status: 'Available',
+    cargo: '—',
+    speed: '0 km/h'
+  },
+  {
+    reg: 'GJ-05-GH-3456',
+    driver: '—',
+    lat: 23.0225,
+    lng: 72.5714,
+    city: 'Ahmedabad',
+    status: 'In Shop',
+    cargo: '—',
+    speed: '0 km/h'
+  },
+  {
+    reg: 'TN-09-IJ-7890',
+    driver: 'Sunita Devi',
+    lat: 13.0827,
+    lng: 80.2707,
+    city: 'Chennai',
+    status: 'On Trip',
+    cargo: 'Auto Parts — 800 kg',
+    speed: '55 km/h'
+  },
+  {
+    reg: 'RJ-14-KL-2345',
+    driver: 'Mohan Patel',
+    lat: 26.9124,
+    lng: 75.7873,
+    city: 'Jaipur',
+    status: 'Suspended',
+    cargo: '—',
+    speed: '0 km/h'
+  }
+];
+
+function getMarkerColor(status) {
+  const colors = {
+    'On Trip': '#2563EB',
+    'Available': '#10B981',
+    'In Shop': '#F59E0B',
+    'Suspended': '#EF4444'
+  };
+  return colors[status] || '#94A3B8';
+}
+
+function createVehicleIcon(status) {
+  const color = getMarkerColor(status);
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="16" fill="${color}" stroke="white" stroke-width="3" opacity="0.95"/>
+      <text x="18" y="23" text-anchor="middle" font-size="14" fill="white">🚛</text>
+    </svg>`;
+  return L.divIcon({
+    html: svg,
+    iconSize: [36, 36],
+    iconAnchor: [18, 18],
+    popupAnchor: [0, -20],
+    className: ''
+  });
+}
+
+function initFleetMap() {
+  // Avoid re-initializing
+  if (fleetMap) {
+    fleetMap.invalidateSize();
+    return;
+  }
+
+  const mapEl = document.getElementById('fleet-map');
+  if (!mapEl) return;
+
+  // Initialize centered on India
+  fleetMap = L.map('fleet-map', {
+    center: [20.5937, 78.9629],
+    zoom: 5,
+    zoomControl: true,
+    scrollWheelZoom: true
+  });
+
+  // OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 18
+  }).addTo(fleetMap);
+
+  // Place vehicle markers
+  INDIAN_VEHICLES.forEach(vehicle => {
+    const marker = L.marker([vehicle.lat, vehicle.lng], {
+      icon: createVehicleIcon(vehicle.status)
+    }).addTo(fleetMap);
+
+    // Popup content
+    marker.bindPopup(`
+      <div style="font-family:'DM Sans',sans-serif; min-width:200px; padding:4px;">
+        <div style="font-weight:700; font-size:14px; margin-bottom:6px;">🚛 ${vehicle.reg}</div>
+        <div style="font-size:12px; color:#475569; margin-bottom:2px;">👤 Driver: <strong>${vehicle.driver}</strong></div>
+        <div style="font-size:12px; color:#475569; margin-bottom:2px;">📍 Location: <strong>${vehicle.city}</strong></div>
+        <div style="font-size:12px; color:#475569; margin-bottom:2px;">📦 Cargo: ${vehicle.cargo}</div>
+        <div style="font-size:12px; color:#475569; margin-bottom:8px;">⚡ Speed: ${vehicle.speed}</div>
+        <span style="
+          display:inline-flex; align-items:center; gap:4px;
+          padding:3px 10px; border-radius:100px; font-size:11px; font-weight:700;
+          background:${getMarkerColor(vehicle.status)}20;
+          color:${getMarkerColor(vehicle.status)};
+        ">● ${vehicle.status}</span>
+      </div>
+    `);
+
+    vehicleMarkers.push(marker);
+  });
+
+  // Add legend
+  const legend = L.control({ position: 'bottomright' });
+  legend.onAdd = function () {
+    const div = L.DomUtil.create('div');
+    div.style.cssText = `
+      background:white; padding:10px 14px; border-radius:10px;
+      font-family:'DM Sans',sans-serif; font-size:12px;
+      box-shadow:0 2px 12px rgba(0,0,0,0.15); line-height:2;
+    `;
+    div.innerHTML = `
+      <div style="font-weight:700; margin-bottom:4px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#94A3B8;">Fleet Status</div>
+      <div><span style="color:#2563EB;">●</span> On Trip</div>
+      <div><span style="color:#10B981;">●</span> Available</div>
+      <div><span style="color:#F59E0B;">●</span> In Shop</div>
+      <div><span style="color:#EF4444;">●</span> Suspended</div>
+    `;
+    return div;
+  };
+  legend.addTo(fleetMap);
+
+  // Add user's own GPS location (your original code)
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        const youIcon = L.divIcon({
+          html: `<div style="
+            width:14px; height:14px; border-radius:50%;
+            background:#2563EB; border:3px solid white;
+            box-shadow:0 0 0 3px rgba(37,99,235,0.3);
+          "></div>`,
+          iconSize: [14, 14],
+          iconAnchor: [7, 7],
+          className: ''
+        });
+
+        L.marker([lat, lng], { icon: youIcon })
+          .addTo(fleetMap)
+          .bindPopup('<div style="font-family:DM Sans,sans-serif; font-size:13px; font-weight:600;">📍 Your Location</div>');
+
+        document.getElementById('map-status-pill').textContent = '● Live · GPS Active';
+      },
+      function (error) {
+        console.warn('GPS not available:', error.message);
+        document.getElementById('map-status-pill').textContent = '● Live · No GPS';
+      }
+    );
+  }
+}
+
+function centerMapOnIndia() {
+  if (fleetMap) {
+    fleetMap.setView([20.5937, 78.9629], 5);
+  }
+}
 // ======================== PANELS ========================
 function openPanel(id) {
   closeAllDropdowns();
