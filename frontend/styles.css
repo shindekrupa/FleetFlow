@@ -425,7 +425,7 @@ footer {
   border: 1.5px solid var(--border);
   border-radius: 8px; font-family: 'DM Sans', sans-serif;
   font-size: 14px; color: rgba(0, 0, 0, 0);
-  background: rgba(0, 0, 0, 1); cursor: pointer;
+  background: rgb(255, 255, 255); cursor: pointer;
   outline: none;
 }
 

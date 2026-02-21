@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -225,43 +227,7 @@
         </div>
       </div>
     </div>
-  <div class="auth-card">
-    <div class="auth-logo">Fleet<span>Flow</span></div>
-    <div class="auth-tagline">All in One logistic Management Platform</div>
-    <div class="auth-title">Welcome</div>
-    <div class="auth-sub">Sign in to your account to continue</div>
-
-    <div class="form-group">
-      <label class="form-label">Email Address</label>
-      <input class="form-input" type="email" id="login-email" placeholder="you@company.com" value="admin@fleetflow.io">
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Password</label>
-      <input class="form-input" type="password" id="login-password" placeholder="••••••••" value="password">
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Role <span style="color:var(--text3); font-weight:400;">(or auto-detect from email)</span></label>
-      <select class="form-select" id="login-role">
-        <option value="admin">Administrator</option>
-        <option value="fleet_manager">Fleet Manager</option>
-        <option value="dispatcher">Dispatcher</option>
-        <option value="safety_officer">Safety Officer</option>
-        <option value="financial_analyst">Financial Analyst</option>
-        <option value="driver">Driver (Delivery Personnel)</option>
-      </select>
-    </div>
-
-    <div class="auth-extras">
-      <label class="check-wrap">
-        <input type="checkbox" checked>
-        Remember me
-      </label>
-      <a href="#" class="link">Forgot password?</a>
-    </div>
-
-    <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In →</button>
+  
 
 
     <!-- RIGHT PANEL -->
@@ -417,8 +383,8 @@
       <button class="close-btn" onclick="closePanel('add-vehicle-panel')">✕</button>
     </div>
     <div class="form-group"><label class="form-label">Vehicle ID / Plate</label><input class="form-input" placeholder="e.g. TRK-009 / ABC 1234"></div>
-    <div class="form-group"><label class="form-label">Type</label>
-      <select class="form-select"><option>Truck</option><option>Van</option><option>Pickup</option><option>Motorcycle</option></select>
+    <div class="form-group" ><label class="form-label">Type</label>
+      <select class="form-select "><option style="color: black;">Truck</option><option style="color: black;">Van</option><option style="color: black;">Pickup</option><option style="color: black;">Motorcycle</option></select>
     </div>
     <div class="form-group"><label class="form-label">Make & Model</label><input class="form-input" placeholder="e.g. Isuzu NPR 300"></div>
     <div class="form-group"><label class="form-label">Year</label><input class="form-input" type="number" placeholder="2022"></div>
@@ -426,7 +392,7 @@
     <div class="form-group"><label class="form-label">Current Odometer (km)</label><input class="form-input" type="number" placeholder="45000"></div>
     <div class="form-group"><label class="form-label">Region / Branch</label><input class="form-input" placeholder="e.g. North Region"></div>
     <div class="form-group"><label class="form-label">Initial Status</label>
-      <select class="form-select"><option>Available</option><option>In Shop</option><option>Retired</option></select>
+      <select class="form-select"><option style="color: black;">Available</option><option style="color: black;">In Shop</option><option style="color: black;">Retired</option></select>
     </div>
     <button class="btn btn-primary btn-full" onclick="closePanel('add-vehicle-panel'); showToast('Vehicle added successfully!','success')">Save Vehicle</button>
   </div>
@@ -444,13 +410,13 @@
     <div class="form-group"><label class="form-label">Destination</label><input class="form-input" placeholder="Delivery location"></div>
     <div class="form-group"><label class="form-label">Cargo Weight (kg)</label><input class="form-input" type="number" placeholder="1500"></div>
     <div class="form-group"><label class="form-label">Assign Vehicle</label>
-      <select class="form-select">
+      <select class="form-select" style="color: black;">
         <option>TRK-001 - Isuzu NPR (3000kg) — Available</option>
         <option>TRK-003 - Mitsubishi Canter — Available</option>
       </select>
     </div>
     <div class="form-group"><label class="form-label">Assign Driver</label>
-      <select class="form-select">
+      <select class="form-select" style="color: black;">
         <option>John Santos — License valid (2yr)</option>
         <option>Maria Cruz — License valid (8mo)</option>
       </select>
