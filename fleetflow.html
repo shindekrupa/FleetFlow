@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FleetFlow — Smart Fleet & Logistics Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fleetflow.css">
+
+</head>
+<body>
+
+<!-- ==================== LANDING PAGE ==================== -->
+<div id="landing">
+  <nav class="land-nav">
+    <div class="land-logo"><span></span>Transify</span></div>
+    <ul class="land-nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#roles">Roles</a></li>
+      <li><button class="btn btn-primary btn-sm" onclick="showAuth()">Login</button></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">All in One Fleet Management Platform</div>
+      <h1>Smart Fleet & <span class="accent-word">Logistics</span> Management</h1>
+      <p class="hero-sub">Centralized fleet tracking, driver safety, intelligent dispatch, and cost optimization — all in one enterprise-grade platform built for modern logistics operations.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" onclick="showAuth()">⚡ Login to Dashboard</button>
+        <button class="btn btn-outline" onclick="showToast('Demo request sent! Our team will reach out within 24 hours.','success')">Request Demo</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">99.7%</div>
+          <div class="hero-stat-label">Uptime SLA</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">10K+</div>
+          <div class="hero-stat-label">Vehicles Tracked</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">23%</div>
+          <div class="hero-stat-label">Cost Reduction</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">6</div>
+          <div class="hero-stat-label">Role Types</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-label">Platform Features</div>
+      <h2 class="section-title">Everything you need to run <br>your fleet at scale</h2>
+      <p class="section-sub">From real-time GPS tracking to predictive maintenance and financial analytics — FleetFlow gives every stakeholder exactly what they need.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🛰️</div>
+          <h3>Real-Time Fleet Monitoring</h3>
+          <p>Live GPS tracking with status updates, geofencing alerts, and telematics integration. Know exactly where every vehicle is, every second.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3>Intelligent Dispatch & Validation</h3>
+          <p>Smart dispatch engine that validates cargo limits, driver license expiry, and vehicle availability before trips are confirmed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3>Maintenance & Compliance</h3>
+          <p>Automated maintenance scheduling, compliance tracking, license expiry alerts, and full audit trails for regulatory reporting.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Financial & ROI Analytics</h3>
+          <p>Cost per km, fuel efficiency, vehicle ROI, and exportable reports in CSV and PDF. Give your finance team the data they need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-bg" id="how">
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Up and running in 4 steps</h2>
+      <p class="section-sub">Get your entire fleet operation digitized and optimized in less time than you think.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Register Vehicles</h3>
+          <p>Add your fleet with specs, capacity, odometer readings, and compliance documents.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Assign Drivers</h3>
+          <p>Onboard drivers with license info, safety scores, and role-based access to the platform.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Dispatch Trips</h3>
+          <p>Intelligent dispatch validates every trip before it's confirmed. No more manual errors.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Track Costs & Analytics</h3>
+          <p>Monitor fuel, maintenance, and operational costs in real-time with exportable reports.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLES -->
+  <section id="roles">
+    <div class="container">
+      <div class="section-label">Role-Based Access</div>
+      <h2 class="section-title">The right tools for every team member</h2>
+      <p class="section-sub">Six distinct roles with tailored dashboards and permissions — from administrators to drivers.</p>
+      <div class="roles-grid">
+        <div class="role-card">
+          <span class="role-icon">👔</span>
+          <h3>Fleet Manager</h3>
+          <p>Full visibility over vehicles, maintenance schedules, driver assignments, and fleet analytics.</p>
+        </div>
+        <div class="role-card">
+          <span class="role-icon">📡</span>
+          <h3>Dispatcher</h3>
+          <p>Create and manage trips, assign vehicles and drivers, monitor active cargo with smart validation.</p>
+        </div>
+        <div class="role-card">
+          <span class="role-icon">🛡️</span>
+          <h3>Safety Officer</h3>
+          <p>Driver compliance, license expiry monitoring, safety scores, and regulatory audit trails.</p>
+        </div>
+        <div class="role-card">
+          <span class="role-icon">📈</span>
+          <h3>Financial Analyst</h3>
+          <p>Expense logs, fuel costs, operational ROI reports, and exportable data for accounting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section style="background: var(--bg2)">
+    <div class="container">
+      <div class="section-label">Why FleetFlow</div>
+      <h2 class="section-title">Built for enterprise, <br>trusted by operators</h2>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon-wrap">🔐</div>
+          <div>
+            <h4>Secure Role-Based Access</h4>
+            <p>Granular permissions ensure each team member sees only what they need — nothing more.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon-wrap">✅</div>
+          <div>
+            <h4>Compliance Monitoring</h4>
+            <p>Automated alerts for license expiry, maintenance overdue, and regulatory deadlines.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon-wrap">⚡</div>
+          <div>
+            <h4>Real-Time Status Updates</h4>
+            <p>Live fleet status with push notifications and webhooks for critical events.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon-wrap">📁</div>
+          <div>
+            <h4>Exportable Reports</h4>
+            <p>Generate CSV and PDF reports on demand for stakeholders, auditors, or accounting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="land-logo">Fleet<span>Flow</span></div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#" onclick="showAuth(); return false;">Login</a>
+      </div>
+      <div class="footer-copy">© 2025 FleetFlow. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== AUTH SCREEN ==================== -->
+<div id="auth-screen">
+  <div class="auth-grid-bg"></div>
+  <div class="auth-card">
+    <div class="auth-logo">Fleet<span>Flow</span></div>
+    <div class="auth-tagline">Enterprise Fleet Management</div>
+    <div class="auth-title">Welcome back</div>
+    <div class="auth-sub">Sign in to your account to continue</div>
+
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input class="form-input" type="email" id="login-email" placeholder="you@company.com" value="admin@fleetflow.io">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input class="form-input" type="password" id="login-password" placeholder="••••••••" value="password">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Role <span style="color:var(--text3); font-weight:400;">(or auto-detect from email)</span></label>
+      <select class="form-select" id="login-role">
+        <option value="admin">Administrator</option>
+        <option value="fleet_manager">Fleet Manager</option>
+        <option value="dispatcher">Dispatcher</option>
+        <option value="safety_officer">Safety Officer</option>
+        <option value="financial_analyst">Financial Analyst</option>
+        <option value="driver">Driver (Delivery Personnel)</option>
+      </select>
+    </div>
+
+    <div class="auth-extras">
+      <label class="check-wrap">
+        <input type="checkbox" checked>
+        Remember me
+      </label>
+      <a href="#" class="link">Forgot password?</a>
+    </div>
+
+    <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In →</button>
+
+    <div class="demo-accounts">
+      <div class="demo-title">Quick Access — Demo Accounts</div>
+      <div class="demo-grid">
+        <div class="demo-btn" onclick="quickLogin('admin')">👑 Admin</div>
+        <div class="demo-btn" onclick="quickLogin('fleet_manager')">🚛 Fleet Mgr</div>
+        <div class="demo-btn" onclick="quickLogin('dispatcher')">📡 Dispatcher</div>
+        <div class="demo-btn" onclick="quickLogin('safety_officer')">🛡️ Safety</div>
+        <div class="demo-btn" onclick="quickLogin('financial_analyst')">📊 Finance</div>
+        <div class="demo-btn" onclick="quickLogin('driver')">🚗 Driver</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:16px;">
+      <a href="#" class="link" onclick="hidAuth(); return false;">← Back to website</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== APP ==================== -->
+<div id="app">
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-logo">Fleet<span>Flow</span></div>
+      <div id="sidebar-menu"></div>
+      <div class="sidebar-bottom">
+        <div class="user-info" onclick="toggleDropdown('user-dropdown')">
+          <div class="avatar" id="user-avatar">A</div>
+          <div>
+            <div class="user-name" id="user-name-display">Admin User</div>
+            <div class="user-role" id="user-role-display">Administrator</div>
+          </div>
+        </div>
+        <div class="dropdown-menu" id="user-dropdown">
+          <div class="dropdown-item">👤 Profile Settings</div>
+          <div class="dropdown-item">🌙 Dark Mode (Coming Soon)</div>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-item" onclick="doLogout()" style="color:var(--danger)">🚪 Sign Out</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <div class="main-area">
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="topbar-title" id="page-title">Command Center</div>
+        <div class="topbar-right">
+          <div class="dropdown">
+            <button class="icon-btn" onclick="toggleDropdown('notif-dropdown')" title="Notifications">
+              🔔
+              <span class="notif-dot"></span>
+            </button>
+            <div class="dropdown-menu" id="notif-dropdown" style="min-width:280px; right:0;">
+              <div style="padding:12px 16px; border-bottom:1px solid var(--border);">
+                <strong style="font-size:14px;">Notifications</strong>
+              </div>
+              <div class="dropdown-item">⚠️ TRK-004 maintenance overdue</div>
+              <div class="dropdown-item">📋 License expiring: John Doe (3d)</div>
+              <div class="dropdown-item">✅ Trip #TRP-0088 completed</div>
+              <div class="dropdown-item" style="font-size:12px; color:var(--accent); justify-content:center;">View all notifications</div>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="icon-btn" onclick="toggleDropdown('quick-dropdown')" title="Quick Actions">⚙️</button>
+            <div class="dropdown-menu" id="quick-dropdown">
+              <div class="dropdown-item" onclick="openPanel('add-vehicle-panel')">🚛 Add Vehicle</div>
+              <div class="dropdown-item" onclick="openPanel('add-trip-panel')">📦 Create Trip</div>
+              <div class="dropdown-item" onclick="openPanel('add-driver-panel')">👤 Add Driver</div>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-item">📤 Export Report</div>
+            </div>
+          </div>
+          <div class="avatar" id="topbar-avatar" style="cursor:pointer;">A</div>
+        </div>
+      </div>
+
+      <!-- PAGE CONTENT -->
+      <div class="page-content">
+        <div id="page-dashboard" class="page active"></div>
+        <div id="page-vehicles" class="page"></div>
+        <div id="page-trips" class="page"></div>
+        <div id="page-maintenance" class="page"></div>
+        <div id="page-fuel" class="page"></div>
+        <div id="page-drivers" class="page"></div>
+        <div id="page-analytics" class="page"></div>
+        <div id="page-users" class="page"></div>
+        <div id="page-compliance" class="page"></div>
+        <div id="page-expenses" class="page"></div>
+        <div id="page-driver-view" class="page"></div>
+        <div id="page-settings" class="page"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PANELS ==================== -->
+<div class="panel-overlay" id="add-vehicle-panel">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Add New Vehicle</div>
+      <button class="close-btn" onclick="closePanel('add-vehicle-panel')">✕</button>
+    </div>
+    <div class="form-group"><label class="form-label">Vehicle ID / Plate</label><input class="form-input" placeholder="e.g. TRK-009 / ABC 1234"></div>
+    <div class="form-group"><label class="form-label">Type</label>
+      <select class="form-select"><option>Truck</option><option>Van</option><option>Pickup</option><option>Motorcycle</option></select>
+    </div>
+    <div class="form-group"><label class="form-label">Make & Model</label><input class="form-input" placeholder="e.g. Isuzu NPR 300"></div>
+    <div class="form-group"><label class="form-label">Year</label><input class="form-input" type="number" placeholder="2022"></div>
+    <div class="form-group"><label class="form-label">Cargo Capacity (kg)</label><input class="form-input" type="number" placeholder="3000"></div>
+    <div class="form-group"><label class="form-label">Current Odometer (km)</label><input class="form-input" type="number" placeholder="45000"></div>
+    <div class="form-group"><label class="form-label">Region / Branch</label><input class="form-input" placeholder="e.g. North Region"></div>
+    <div class="form-group"><label class="form-label">Initial Status</label>
+      <select class="form-select"><option>Available</option><option>In Shop</option><option>Retired</option></select>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="closePanel('add-vehicle-panel'); showToast('Vehicle added successfully!','success')">Save Vehicle</button>
+  </div>
+</div>
+
+<div class="panel-overlay" id="add-trip-panel">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Create New Trip</div>
+      <button class="close-btn" onclick="closePanel('add-trip-panel')">✕</button>
+    </div>
+    <div class="alert alert-warning">⚠️ Trip will be validated before dispatch. Expired licenses and over-capacity loads will be blocked.</div>
+    <div class="form-group"><label class="form-label">Origin</label><input class="form-input" placeholder="Pickup location"></div>
+    <div class="form-group"><label class="form-label">Destination</label><input class="form-input" placeholder="Delivery location"></div>
+    <div class="form-group"><label class="form-label">Cargo Weight (kg)</label><input class="form-input" type="number" placeholder="1500"></div>
+    <div class="form-group"><label class="form-label">Assign Vehicle</label>
+      <select class="form-select">
+        <option>TRK-001 - Isuzu NPR (3000kg) — Available</option>
+        <option>TRK-003 - Mitsubishi Canter — Available</option>
+      </select>
+    </div>
+    <div class="form-group"><label class="form-label">Assign Driver</label>
+      <select class="form-select">
+        <option>John Santos — License valid (2yr)</option>
+        <option>Maria Cruz — License valid (8mo)</option>
+      </select>
+    </div>
+    <div class="form-group"><label class="form-label">Scheduled Departure</label><input class="form-input" type="datetime-local"></div>
+    <div class="form-group"><label class="form-label">Notes</label><textarea class="form-input" rows="2" placeholder="Special handling instructions..."></textarea></div>
+    <button class="btn btn-primary btn-full" onclick="closePanel('add-trip-panel'); showToast('Trip dispatched successfully!','success')">Dispatch Trip</button>
+  </div>
+</div>
+
+<div class="panel-overlay" id="add-driver-panel">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Add Driver</div>
+      <button class="close-btn" onclick="closePanel('add-driver-panel')">✕</button>
+    </div>
+    <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" placeholder="First Last"></div>
+    <div class="form-group"><label class="form-label">Employee ID</label><input class="form-input" placeholder="EMP-0012"></div>
+    <div class="form-group"><label class="form-label">License Number</label><input class="form-input" placeholder="LIC-XXXXX"></div>
+    <div class="form-group"><label class="form-label">License Expiry</label><input class="form-input" type="date"></div>
+    <div class="form-group"><label class="form-label">License Class</label>
+      <select class="form-select"><option>Class A (Heavy)</option><option>Class B (Medium)</option><option>Class C (Light)</option></select>
+    </div>
+    <div class="form-group"><label class="form-label">Contact Number</label><input class="form-input" type="tel" placeholder="+63 917 XXX XXXX"></div>
+    <div class="form-group"><label class="form-label">Initial Status</label>
+      <select class="form-select"><option>On Duty</option><option>Off Duty</option></select>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="closePanel('add-driver-panel'); showToast('Driver added!','success')">Save Driver</button>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="modal">
+    <div class="modal-icon">⚠️</div>
+    <div class="modal-title" id="modal-title">Confirm Action</div>
+    <div class="modal-text" id="modal-text">Are you sure you want to proceed? This action cannot be undone.</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-danger btn-sm" id="modal-confirm-btn" onclick="closeModal(); showToast('Action completed.','success')">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="fleetflow.js"></script>
+</body>
+</html>
