@@ -165,6 +165,46 @@ function doLogout() {
   showToast('You have been signed out.', 'success');
 }
 
+// ==================== AUTH ====================
+
+// Show the registration screen
+function showRegister() {
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('register-screen').style.display = 'flex';
+}
+
+function hideRegister() {
+  document.getElementById('register-screen').style.display = 'none';
+  document.getElementById('auth-screen').style.display = 'flex';
+}
+
+// Handle registration form submission
+function doRegister() {
+  const name = document.getElementById('reg-name').value;
+  const email = document.getElementById('reg-email').value;
+  const mobile = document.getElementById('reg-mobile').value;
+  const password = document.getElementById('reg-password').value;
+  const confirm = document.getElementById('reg-confirm').value;
+  const role = document.getElementById('reg-role').value;
+
+  if (password !== confirm) {
+    alert("Passwords do not match!");
+    return;
+  }
+
+  if (!role) {
+    alert("Please select a role.");
+    return;
+  }
+
+  // For now, just simulate success
+  alert(`Account created for ${name} (${role})`);
+
+  // Optionally switch back to login after registration
+  hideRegister();
+  showAuth();
+}
+
 // ======================== NAVIGATION ========================
 function buildSidebar() {
   const menu = currentUser.menu;
